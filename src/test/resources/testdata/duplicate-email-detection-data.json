@@ -1,0 +1,66 @@
+// Test data for Duplicate Email Detection (TC-N003)
+[
+  {
+    "testCaseId": "TC-N003",
+    "description": "Attempt to create a contact with an email that already exists in the CRM system.",
+    "preconditions": [
+      "User is logged into the CRM system.",
+      "A contact with the email 'test@example.com' already exists."
+    ],
+    "input": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "test@example.com",
+      "phone": "1234567890"
+    },
+    "expectedResult": {
+      "errorMessage": "Email is already in use."
+    },
+    "postconditions": [
+      "No duplicate contact is saved in the CRM system."
+    ],
+    "priority": "Medium"
+  },
+  {
+    "testCaseId": "TC-N003-EDGE-CASE-1",
+    "description": "Attempt to create a contact with the same email but different case (case insensitivity check)",
+    "preconditions": [
+      "User is logged into the CRM system.",
+      "A contact with the email 'test@example.com' already exists."
+    ],
+    "input": {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "TEST@EXAMPLE.COM",
+      "phone": "0987654321"
+    },
+    "expectedResult": {
+      "errorMessage": "Email is already in use."
+    },
+    "postconditions": [
+      "No duplicate contact is saved in the CRM system."
+    ],
+    "priority": "Medium"
+  },
+  {
+    "testCaseId": "TC-N003-EDGE-CASE-2",
+    "description": "Attempt to create a contact with a similar but not identical email (should succeed)",
+    "preconditions": [
+      "User is logged into the CRM system.",
+      "A contact with the email 'test@example.com' already exists."
+    ],
+    "input": {
+      "firstName": "Alice",
+      "lastName": "Brown",
+      "email": "test1@example.com",
+      "phone": "1122334455"
+    },
+    "expectedResult": {
+      "errorMessage": null
+    },
+    "postconditions": [
+      "Contact is created successfully."
+    ],
+    "priority": "Medium"
+  }
+]
