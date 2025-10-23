@@ -1,0 +1,64 @@
+// Test data for: Invalid Email Format Rejection (TC-N002)
+// Purpose: To provide invalid email formats and expected error message for negative testing
+[
+  {
+    "testCaseId": "TC-N002",
+    "description": "Missing @ symbol",
+    "inputEmail": "invalidemail.com",
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Missing domain",
+    "inputEmail": "user@",
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Missing username",
+    "inputEmail": "@domain.com",
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Multiple @ symbols",
+    "inputEmail": "user@@domain.com",
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Special characters not allowed",
+    "inputEmail": "user!#%&*()=domain.com",
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Whitespace in email",
+    "inputEmail": "user name@domain.com",
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Missing TLD",
+    "inputEmail": "user@domain",
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Dot at start",
+    "inputEmail": ".user@domain.com",
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Dot at end",
+    "inputEmail": "user.@domain.com",
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Consecutive dots",
+    "inputEmail": "user..name@domain.com",
+    "expectedError": "Please enter a valid email address."
+  }
+]
