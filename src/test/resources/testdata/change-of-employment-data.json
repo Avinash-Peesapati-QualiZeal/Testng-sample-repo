@@ -1,0 +1,29 @@
+// Test Data for TC-N001: change of employment
+// Purpose: To support functional test automation for the change of employment process in the ASTM member application
+// Note: No specific test data items required as per test case. File provided for future extensibility and framework consistency.
+{
+  "testCaseId": "TC-N001",
+  "testCaseName": "change of employment",
+  "module": null,
+  "submodule": null,
+  "priority": "Medium",
+  "type": "Functional",
+  "locators": [
+    // Placeholder for 5 locators referenced in the test case steps
+    // e.g. { "name": "employmentChangeButton", "locator": "//button[@id='changeEmployment']" }
+  ],
+  "testData": [
+    // No specific test data items required for this test case
+    // Add test data objects here if required in future
+  ],
+  "edgeCases": [
+    // No edge/boundary test data required as per test case
+    // Add edge case data here if required in future
+  ],
+  "metadata": {
+    "objective": "To verify the change of employment process in the ASTM member application.",
+    "preconditions": null,
+    "postconditions": null,
+    "expectedResult": "The change of employment process is completed successfully, with all expected outcomes observed as described in each step."
+  }
+}
