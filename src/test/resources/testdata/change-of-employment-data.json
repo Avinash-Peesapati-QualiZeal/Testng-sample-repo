@@ -1,0 +1,167 @@
+// Test data for TC-N001: change of employment
+[
+  {
+    "testCaseId": "TC-N001",
+    "description": "Happy path - valid change of employment",
+    "member": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "memberId": "M123456",
+      "email": "john.doe@yopmail.com",
+      "phone": "+1-555-123-4567",
+      "currentOrganization": "OldOrg Inc.",
+      "accountAddress": "123 Main St, Springfield, IL, 62701"
+    },
+    "newOrganizationDetails": {
+      "organizationName": "NewOrg LLC",
+      "organizationAddress": "456 Elm St, Metropolis, NY, 10001",
+      "startDate": "2024-07-01"
+    },
+    "cooperativeAgreement": {
+      "representative": "Jane Smith",
+      "agreementAccepted": true
+    },
+    "committeeReview": [
+      "Committee A",
+      "Committee B"
+    ],
+    "reviewDetails": {
+      "personalDetailsSectionPresent": true,
+      "phone": "+1-555-123-4567",
+      "email": "john.doe@yopmail.com"
+    },
+    "confirmationPopup": {
+      "message": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account",
+      "okButtonPresent": true
+    },
+    "thankYouPage": {
+      "message": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "goToMyASTMButton": true
+    },
+    "expectedEmails": [
+      {
+        "recipient": "stctestlab@yopmail.com",
+        "subjectContains": "Request to Change of Employment",
+        "includePhoneEmailChanges": true
+      },
+      {
+        "recipient": "john.doe@yopmail.com",
+        "subjectContains": "Change of Employment Confirmation"
+      }
+    ],
+    "logsToCapture": [
+      "COE logs for user M123456"
+    ],
+    "expectedReflections": [
+      "Member application updated",
+      "IA updated"
+    ],
+    "actions": {
+      "editReviewStep": {
+        "changePhone": "+1-555-987-6543",
+        "changeEmail": "john.new@yopmail.com"
+      },
+      "cancelAction": {
+        "phone": "+1-555-123-4567",
+        "email": "john.doe@yopmail.com"
+      }
+    }
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge case - missing required fields",
+    "member": {
+      "firstName": "",
+      "lastName": "",
+      "memberId": "",
+      "email": "",
+      "phone": "",
+      "currentOrganization": "",
+      "accountAddress": ""
+    },
+    "newOrganizationDetails": {
+      "organizationName": "",
+      "organizationAddress": "",
+      "startDate": ""
+    },
+    "cooperativeAgreement": {
+      "representative": "",
+      "agreementAccepted": false
+    },
+    "committeeReview": [],
+    "reviewDetails": {
+      "personalDetailsSectionPresent": false,
+      "phone": "",
+      "email": ""
+    },
+    "confirmationPopup": {
+      "message": "",
+      "okButtonPresent": false
+    },
+    "thankYouPage": {
+      "message": "",
+      "goToMyASTMButton": false
+    },
+    "expectedEmails": [],
+    "logsToCapture": [],
+    "expectedReflections": [],
+    "actions": {}
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Boundary case - extremely long organization name and address",
+    "member": {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "memberId": "M999999",
+      "email": "alice.smith@yopmail.com",
+      "phone": "+1-555-000-0001",
+      "currentOrganization": "AOrg",
+      "accountAddress": "1 Short Rd, Tinyville, TX, 70001"
+    },
+    "newOrganizationDetails": {
+      "organizationName": "VeryLongOrganizationNameThatExceedsNormalLimitsAndShouldBeTestedForTruncationOrValidationErrors1234567890",
+      "organizationAddress": "9999 Extremely Long Address That Should Be Validated For Length, City, State, 99999-9999, Country, Extra Info, More Extra Info, Even More Extra Info",
+      "startDate": "2024-12-31"
+    },
+    "cooperativeAgreement": {
+      "representative": "Long Name Representative",
+      "agreementAccepted": true
+    },
+    "committeeReview": [
+      "Committee X"
+    ],
+    "reviewDetails": {
+      "personalDetailsSectionPresent": true,
+      "phone": "+1-555-000-0001",
+      "email": "alice.smith@yopmail.com"
+    },
+    "confirmationPopup": {
+      "message": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account",
+      "okButtonPresent": true
+    },
+    "thankYouPage": {
+      "message": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "goToMyASTMButton": true
+    },
+    "expectedEmails": [
+      {
+        "recipient": "stctestlab@yopmail.com",
+        "subjectContains": "Request to Change of Employment",
+        "includePhoneEmailChanges": true
+      },
+      {
+        "recipient": "alice.smith@yopmail.com",
+        "subjectContains": "Change of Employment Confirmation"
+      }
+    ],
+    "logsToCapture": [
+      "COE logs for user M999999"
+    ],
+    "expectedReflections": [
+      "Member application updated",
+      "IA updated"
+    ],
+    "actions": {}
+  }
+]
