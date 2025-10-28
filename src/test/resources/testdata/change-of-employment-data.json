@@ -1,0 +1,137 @@
+// Test data for INT-8038: Change of Employment
+[
+  {
+    "testCaseId": "INT-8038",
+    "description": "Happy path for change of employment with valid data",
+    "member": {
+      "username": "astm_member_01",
+      "password": "Password123!",
+      "currentOrganization": "OldOrg Inc.",
+      "accountAddress": "123 Main St, Springfield, IL, 62704",
+      "phone": "555-123-4567",
+      "email": "member01@yopmail.com"
+    },
+    "newOrganization": {
+      "organizationName": "NewOrg Solutions",
+      "address": "456 Elm St, Chicago, IL, 60601",
+      "startDate": "2024-06-01"
+    },
+    "committeeChanges": [
+      "F42", "E11"
+    ],
+    "expected": {
+      "confirmationPopup": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account",
+      "thankYouPageText": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "staffEmail": "stctestlab@yopmail.com",
+      "memberEmail": "member01@yopmail.com"
+    }
+  },
+  {
+    "testCaseId": "INT-8038",
+    "description": "Edge case: Phone number boundary value (minimum length)",
+    "member": {
+      "username": "astm_member_02",
+      "password": "Password123!",
+      "currentOrganization": "OldOrg Inc.",
+      "accountAddress": "123 Main St, Springfield, IL, 62704",
+      "phone": "12345",
+      "email": "member02@yopmail.com"
+    },
+    "newOrganization": {
+      "organizationName": "NewOrg Solutions",
+      "address": "456 Elm St, Chicago, IL, 60601",
+      "startDate": "2024-06-01"
+    },
+    "committeeChanges": [
+      "F42"
+    ],
+    "expected": {
+      "confirmationPopup": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account",
+      "thankYouPageText": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "staffEmail": "stctestlab@yopmail.com",
+      "memberEmail": "member02@yopmail.com"
+    }
+  },
+  {
+    "testCaseId": "INT-8038",
+    "description": "Edge case: Invalid email format",
+    "member": {
+      "username": "astm_member_03",
+      "password": "Password123!",
+      "currentOrganization": "OldOrg Inc.",
+      "accountAddress": "123 Main St, Springfield, IL, 62704",
+      "phone": "555-987-6543",
+      "email": "invalid-email-format"
+    },
+    "newOrganization": {
+      "organizationName": "NewOrg Solutions",
+      "address": "456 Elm St, Chicago, IL, 60601",
+      "startDate": "2024-06-01"
+    },
+    "committeeChanges": [],
+    "expected": {
+      "confirmationPopup": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account",
+      "thankYouPageText": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "staffEmail": "stctestlab@yopmail.com",
+      "memberEmail": "invalid-email-format"
+    }
+  },
+  {
+    "testCaseId": "INT-8038",
+    "description": "Cancel action resets Phone/Email to original values",
+    "member": {
+      "username": "astm_member_04",
+      "password": "Password123!",
+      "currentOrganization": "OldOrg Inc.",
+      "accountAddress": "123 Main St, Springfield, IL, 62704",
+      "phone": "555-000-0000",
+      "email": "member04@yopmail.com"
+    },
+    "newOrganization": {
+      "organizationName": "NewOrg Solutions",
+      "address": "456 Elm St, Chicago, IL, 60601",
+      "startDate": "2024-06-01"
+    },
+    "committeeChanges": [
+      "E11"
+    ],
+    "editAction": {
+      "newPhone": "555-111-2222",
+      "newEmail": "member04_new@yopmail.com",
+      "cancel": true
+    },
+    "expected": {
+      "phoneAfterCancel": "555-000-0000",
+      "emailAfterCancel": "member04@yopmail.com"
+    }
+  },
+  {
+    "testCaseId": "INT-8038",
+    "description": "Edit action updates Phone/Email and persists after confirmation",
+    "member": {
+      "username": "astm_member_05",
+      "password": "Password123!",
+      "currentOrganization": "OldOrg Inc.",
+      "accountAddress": "123 Main St, Springfield, IL, 62704",
+      "phone": "555-222-3333",
+      "email": "member05@yopmail.com"
+    },
+    "newOrganization": {
+      "organizationName": "NewOrg Solutions",
+      "address": "456 Elm St, Chicago, IL, 60601",
+      "startDate": "2024-06-01"
+    },
+    "committeeChanges": [
+      "F42", "E11"
+    ],
+    "editAction": {
+      "newPhone": "555-444-5555",
+      "newEmail": "member05_new@yopmail.com",
+      "cancel": false
+    },
+    "expected": {
+      "phoneAfterEdit": "555-444-5555",
+      "emailAfterEdit": "member05_new@yopmail.com"
+    }
+  }
+]
