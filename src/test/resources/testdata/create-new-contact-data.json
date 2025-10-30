@@ -1,0 +1,51 @@
+// Test data for: Create a new contact (TC-N001)
+[
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation - typical data",
+    "contact": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "+15551234567",
+      "company": "Acme Inc."
+    },
+    "expectedMessage": "Contact has been created successfully."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation - boundary values (min length)",
+    "contact": {
+      "firstName": "A",
+      "lastName": "B",
+      "email": "a.b@e.co",
+      "phone": "+1",
+      "company": "C"
+    },
+    "expectedMessage": "Contact has been created successfully."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation - boundary values (max length)",
+    "contact": {
+      "firstName": "JonathanJonathanJonathanJonathanJonathanJonathanJonathanJonathanJonathanJonathan", // 70 chars
+      "lastName": "DoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoe", // 70 chars
+      "email": "jonathan.doe.maxlength@example-verylongdomainname-abcdefghijklmnopqrstuvwxyz.com",
+      "phone": "+1555123456789012345678901234567890",
+      "company": "Acme Incorporated International Holdings and Subsidiaries Worldwide"
+    },
+    "expectedMessage": "Contact has been created successfully."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation - special characters",
+    "contact": {
+      "firstName": "J@hn!#",
+      "lastName": "D'oe$",
+      "email": "john.doe+test@example.com",
+      "phone": "+1(555)123-4567",
+      "company": "Acme & Sons, LLC"
+    },
+    "expectedMessage": "Contact has been created successfully."
+  }
+]
