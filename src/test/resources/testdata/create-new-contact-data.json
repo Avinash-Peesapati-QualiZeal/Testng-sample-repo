@@ -1,0 +1,68 @@
+// Test data for TC-N001: Create a new contact
+[
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation - typical data",
+    "contact": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "1234567890",
+      "company": "Acme Corp"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "isEdgeCase": false
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation - minimum length names",
+    "contact": {
+      "firstName": "A",
+      "lastName": "B",
+      "email": "a.b@example.com",
+      "phone": "1",
+      "company": "X"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "isEdgeCase": true
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation - maximum length names",
+    "contact": {
+      "firstName": "JonathanJonathanJonathanJonathanJonathanJonathanJonathanJonathanJonathanJonathan",
+      "lastName": "DoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoe",
+      "email": "jonathan.doe@example.com",
+      "phone": "999999999999999",
+      "company": "Mega Corporation International Holdings Unlimited"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "isEdgeCase": true
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation - special characters in name",
+    "contact": {
+      "firstName": "Anne-Marie",
+      "lastName": "O'Neill",
+      "email": "anne.oneill@example.com",
+      "phone": "+44 20 7946 0958",
+      "company": "O'Neill & Sons"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "isEdgeCase": true
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation - unicode characters",
+    "contact": {
+      "firstName": "Zoë",
+      "lastName": "Šimůnek",
+      "email": "zoe.simunek@example.com",
+      "phone": "(+420) 123 456 789",
+      "company": "Česká Firma"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "isEdgeCase": true
+  }
+]
