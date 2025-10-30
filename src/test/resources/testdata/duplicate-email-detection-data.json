@@ -1,0 +1,38 @@
+// Test data for TC-N003: Duplicate Email Detection
+[
+  {
+    "testCaseId": "TC-N003",
+    "description": "Attempt to create a contact with an email that already exists in the system.",
+    "precondition": "A contact with the email 'test@example.com' already exists.",
+    "input": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "test@example.com",
+      "phone": "1234567890"
+    },
+    "expectedErrorMessage": "Email address is already in use.",
+    "edgeCases": [
+      {
+        "description": "Email with different case (should still be considered duplicate)",
+        "input": {
+          "firstName": "Jane",
+          "lastName": "Smith",
+          "email": "TEST@example.com",
+          "phone": "0987654321"
+        },
+        "expectedErrorMessage": "Email address is already in use."
+      },
+      {
+        "description": "Email with leading/trailing spaces",
+        "input": {
+          "firstName": "Alice",
+          "lastName": "Brown",
+          "email": " test@example.com ",
+          "phone": "5555555555"
+        },
+        "expectedErrorMessage": "Email address is already in use."
+      }
+    ],
+    "postCondition": "No duplicate contact is saved in the CRM system."
+  }
+]
