@@ -1,0 +1,68 @@
+// Test data for TC-N001: Create a new contact
+[
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation - all fields valid",
+    "input": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "1234567890",
+      "company": "Acme Corp"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "shouldSave": true
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Boundary: Minimum length for first name (1 character)",
+    "input": {
+      "firstName": "A",
+      "lastName": "Smith",
+      "email": "a.smith@example.com",
+      "phone": "9876543210",
+      "company": "Beta Inc"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "shouldSave": true
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Boundary: Maximum length for last name (50 characters)",
+    "input": {
+      "firstName": "Emily",
+      "lastName": "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMN",
+      "email": "emily.longlastname@example.com",
+      "phone": "5551234567",
+      "company": "Gamma LLC"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "shouldSave": true
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge: Valid special characters in email",
+    "input": {
+      "firstName": "O'Neil",
+      "lastName": "Connor-Smith",
+      "email": "o.neil+crm-test@example.co.uk",
+      "phone": "4445556666",
+      "company": "Delta & Sons"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "shouldSave": true
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Edge: Phone number with country code",
+    "input": {
+      "firstName": "Maria",
+      "lastName": "Garcia",
+      "email": "maria.garcia@example.com",
+      "phone": "+1-800-555-0199",
+      "company": "Epsilon Ltd"
+    },
+    "expectedMessage": "Contact created successfully.",
+    "shouldSave": true
+  }
+]
