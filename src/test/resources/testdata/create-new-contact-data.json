@@ -1,0 +1,64 @@
+// Test data for TC-N001: Create a new contact
+// Purpose: Data-driven scenarios for creating a new contact in CRM
+[
+  {
+    "testCaseId": "TC-N001",
+    "description": "Valid contact creation with typical data",
+    "contact": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "+15551234567",
+      "company": "Acme Corp"
+    },
+    "expectedMessage": "Contact created successfully."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Contact creation with minimum length names (boundary)",
+    "contact": {
+      "firstName": "A",
+      "lastName": "B",
+      "email": "a.b@example.com",
+      "phone": "+10000000000",
+      "company": "X"
+    },
+    "expectedMessage": "Contact created successfully."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Contact creation with maximum length names (boundary)",
+    "contact": {
+      "firstName": "JonathanJonathanJonathanJonathanJonathanJonathanJonathanJonathanJonathanJonathan", // 70 chars
+      "lastName": "DoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoeDoe", // 65 chars
+      "email": "jonathan.doe@example.com",
+      "phone": "+19999999999",
+      "company": "VeryLongCompanyNameVeryLongCompanyNameVeryLongCompanyName"
+    },
+    "expectedMessage": "Contact created successfully."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Contact creation with international characters",
+    "contact": {
+      "firstName": "José",
+      "lastName": "Ångström",
+      "email": "jose.angstrom@example.com",
+      "phone": "+4915123456789",
+      "company": "München GmbH"
+    },
+    "expectedMessage": "Contact created successfully."
+  },
+  {
+    "testCaseId": "TC-N001",
+    "description": "Contact creation with special characters in name",
+    "contact": {
+      "firstName": "Anne-Marie",
+      "lastName": "O'Neill",
+      "email": "anne.oneill@example.com",
+      "phone": "+447700900123",
+      "company": "O'Neill & Partners"
+    },
+    "expectedMessage": "Contact created successfully."
+  }
+]
