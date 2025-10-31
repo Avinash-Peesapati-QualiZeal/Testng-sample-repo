@@ -1,0 +1,52 @@
+// Test data for TC-N004: Maximum Character Limit for Name Field
+[
+  {
+    "testCaseId": "TC-N004",
+    "description": "Maximum allowed input for Name field.",
+    "preconditions": [
+      "User is logged into the CRM system.",
+      "User navigates to the contact creation screen."
+    ],
+    "input": {
+      "nameField": {
+        "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", // 160 characters (example, adjust as per actual system limit)
+        "length": 160,
+        "note": "Boundary value: maximum allowed characters for Name field. Adjust length if system limit is different."
+      }
+    },
+    "expectedResult": "System accepts the input and displays a confirmation message.",
+    "postConditions": "Contact is saved in the CRM system with the specified details.",
+    "priority": "Medium",
+    "locators": [
+      { "element": "nameField", "type": "id", "value": "contact_name" },
+      { "element": "saveButton", "type": "id", "value": "save_contact" },
+      { "element": "confirmationMessage", "type": "css", "value": ".alert-success" },
+      { "element": "contactsMenu", "type": "id", "value": "menu_contacts" },
+      { "element": "logoutButton", "type": "id", "value": "logout" }
+    ]
+  },
+  {
+    "testCaseId": "TC-N004",
+    "description": "Just below maximum allowed input for Name field.",
+    "input": {
+      "nameField": {
+        "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", // 159 characters
+        "length": 159,
+        "note": "Boundary value: just below maximum allowed."
+      }
+    },
+    "expectedResult": "System accepts the input and displays a confirmation message."
+  },
+  {
+    "testCaseId": "TC-N004",
+    "description": "Above maximum allowed input for Name field (should be rejected or trimmed).",
+    "input": {
+      "nameField": {
+        "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", // 161 characters
+        "length": 161,
+        "note": "Boundary value: above maximum allowed. System should reject or trim input."
+      }
+    },
+    "expectedResult": "System should reject input or display an error message. (If system trims, then confirmation message is expected.)"
+  }
+]
