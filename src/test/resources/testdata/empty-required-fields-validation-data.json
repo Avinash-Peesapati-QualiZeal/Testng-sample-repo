@@ -1,0 +1,61 @@
+// Test data for TC-N005: Empty Required Fields Validation
+[
+  {
+    "testCaseId": "TC-N005",
+    "description": "Attempt to save a contact with all required fields empty.",
+    "input": {
+      "name": "",
+      "email": "",
+      "phone": "",
+      "address": "",
+      "company": ""
+    },
+    "expectedErrors": [
+      {
+        "field": "name",
+        "message": "Name is required."
+      },
+      {
+        "field": "email",
+        "message": "Email is required."
+      }
+    ],
+    "shouldSave": false
+  },
+  {
+    "testCaseId": "TC-N005",
+    "description": "Attempt to save a contact with name filled and email empty (boundary case).",
+    "input": {
+      "name": "John Doe",
+      "email": "",
+      "phone": "",
+      "address": "",
+      "company": ""
+    },
+    "expectedErrors": [
+      {
+        "field": "email",
+        "message": "Email is required."
+      }
+    ],
+    "shouldSave": false
+  },
+  {
+    "testCaseId": "TC-N005",
+    "description": "Attempt to save a contact with email filled and name empty (boundary case).",
+    "input": {
+      "name": "",
+      "email": "john.doe@example.com",
+      "phone": "",
+      "address": "",
+      "company": ""
+    },
+    "expectedErrors": [
+      {
+        "field": "name",
+        "message": "Name is required."
+      }
+    ],
+    "shouldSave": false
+  }
+]
