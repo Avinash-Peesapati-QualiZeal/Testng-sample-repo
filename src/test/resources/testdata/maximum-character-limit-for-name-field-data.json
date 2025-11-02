@@ -1,0 +1,50 @@
+// Test data for TC-N004: Maximum Character Limit for Name Field
+[
+  {
+    "testCaseId": "TC-N004",
+    "description": "Maximum allowed characters in Name field (boundary value)",
+    "preconditions": [
+      "User is logged into the CRM system",
+      "User navigates to the contact creation screen"
+    ],
+    "input": {
+      "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" // 160 characters
+    },
+    "expectedResult": "System accepts the input and displays a confirmation message.",
+    "postConditions": [
+      "Contact is saved in the CRM system with the specified details."
+    ],
+    "priority": "Medium",
+    "locators": [
+      "#nameField",
+      "#saveButton",
+      "#confirmationMessage",
+      "#contactList",
+      "#logoutButton"
+    ]
+  },
+  {
+    "testCaseId": "TC-N004",
+    "description": "Name field with one less than maximum (negative boundary)",
+    "input": {
+      "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" // 159 characters
+    },
+    "expectedResult": "System accepts the input and displays a confirmation message."
+  },
+  {
+    "testCaseId": "TC-N004",
+    "description": "Name field with one more than maximum (overflow)",
+    "input": {
+      "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" // 161 characters
+    },
+    "expectedResult": "System should not accept input beyond maximum character limit. Error message should be shown."
+  },
+  {
+    "testCaseId": "TC-N004",
+    "description": "Name field with special characters at maximum length",
+    "input": {
+      "name": "!@#$%^&*()_+{}|:<>?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}|:<>?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" // 120+40=160 characters
+    },
+    "expectedResult": "System accepts the input and displays a confirmation message."
+  }
+]
