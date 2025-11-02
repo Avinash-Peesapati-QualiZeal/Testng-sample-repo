@@ -1,0 +1,75 @@
+// Test data for TC-N006: Handling Special Characters in Name
+[
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with common special characters",
+    "input": {
+      "name": "John O'Connor"
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with accented characters",
+    "input": {
+      "name": "José Ángel"
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with hyphen and apostrophe",
+    "input": {
+      "name": "Anne-Marie D'Souza"
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with non-Latin characters",
+    "input": {
+      "name": "李小龍"
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with emoji",
+    "input": {
+      "name": "Alice 😊"
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with only special characters",
+    "input": {
+      "name": "@#$%^&*()!"
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with leading/trailing spaces and special characters",
+    "input": {
+      "name": "  Dr. John Smith!  "
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with maximum allowed length and special characters",
+    "input": {
+      "name": "A-B_C.D'E F@G#H$I%J^K&L*M(N)O!P" // 30 chars, adjust if system has a different limit
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with newline and tab characters",
+    "input": {
+      "name": "Jane\nDoe\tSmith"
+    },
+    "expectedConfirmation": true
+  }
+]
