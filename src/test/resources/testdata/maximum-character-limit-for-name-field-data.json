@@ -1,0 +1,38 @@
+// Test data for TC-N004: Maximum Character Limit for Name Field
+[
+  {
+    "testCaseId": "TC-N004",
+    "description": "Maximum allowed characters in Name field (boundary value)",
+    "nameInput": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", // 200 characters
+    "expectedConfirmationMessage": "Contact saved successfully.",
+    "shouldSave": true
+  },
+  {
+    "testCaseId": "TC-N004",
+    "description": "One less than maximum allowed characters in Name field (boundary -1)",
+    "nameInput": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", // 199 characters
+    "expectedConfirmationMessage": "Contact saved successfully.",
+    "shouldSave": true
+  },
+  {
+    "testCaseId": "TC-N004",
+    "description": "One more than maximum allowed characters in Name field (boundary +1)",
+    "nameInput": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", // 201 characters
+    "expectedConfirmationMessage": "Name cannot exceed 200 characters.",
+    "shouldSave": false
+  },
+  {
+    "testCaseId": "TC-N004",
+    "description": "Empty Name field (negative test)",
+    "nameInput": "",
+    "expectedConfirmationMessage": "Name is required.",
+    "shouldSave": false
+  },
+  {
+    "testCaseId": "TC-N004",
+    "description": "Name field with special characters at max length",
+    "nameInput": "!@#$%^&*()_+-=~`[]{}|;:',.<>/?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=~`[]{}|;:',.<>/?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#", // 200 characters, mixed
+    "expectedConfirmationMessage": "Contact saved successfully.",
+    "shouldSave": true
+  }
+]
