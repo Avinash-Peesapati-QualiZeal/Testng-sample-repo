@@ -1,0 +1,67 @@
+// Test data for TC-N006: Handling Special Characters in Name
+[
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with common special characters",
+    "input": {
+      "name": "John O'Connor"
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with hyphen and period",
+    "input": {
+      "name": "Anne-Marie St. Clair"
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with accented characters",
+    "input": {
+      "name": "José Ángel Núñez"
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with non-Latin characters",
+    "input": {
+      "name": "李小龍 (Bruce Lee)"
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with emoji",
+    "input": {
+      "name": "Sara 😊 Smith"
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with only special characters",
+    "input": {
+      "name": "@#$%^&*()!"
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with minimum length (1 special character)",
+    "input": {
+      "name": "-"
+    },
+    "expectedConfirmation": true
+  },
+  {
+    "testCaseId": "TC-N006",
+    "description": "Name field with maximum allowed length and special characters",
+    "input": {
+      "name": "A" + "*".repeat(98) + "Z" // 100 chars, edge case
+    },
+    "expectedConfirmation": true
+  }
+]
