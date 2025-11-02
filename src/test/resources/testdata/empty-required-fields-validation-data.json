@@ -1,0 +1,84 @@
+// Test Data for TC-N005: Empty Required Fields Validation
+// Purpose: Validate system prevents saving a contact when required fields are left empty
+[
+  {
+    "testCaseId": "TC-N005",
+    "description": "All required fields left empty",
+    "input": {
+      "name": "",
+      "email": "",
+      "phone": "",
+      "address": "",
+      "company": ""
+    },
+    "expectedErrors": [
+      {
+        "field": "name",
+        "message": "Name is required"
+      },
+      {
+        "field": "email",
+        "message": "Email is required"
+      }
+    ],
+    "shouldSave": false
+  },
+  {
+    "testCaseId": "TC-N005",
+    "description": "Name provided, Email empty",
+    "input": {
+      "name": "Test User",
+      "email": "",
+      "phone": "",
+      "address": "",
+      "company": ""
+    },
+    "expectedErrors": [
+      {
+        "field": "email",
+        "message": "Email is required"
+      }
+    ],
+    "shouldSave": false
+  },
+  {
+    "testCaseId": "TC-N005",
+    "description": "Email provided, Name empty",
+    "input": {
+      "name": "",
+      "email": "test@example.com",
+      "phone": "",
+      "address": "",
+      "company": ""
+    },
+    "expectedErrors": [
+      {
+        "field": "name",
+        "message": "Name is required"
+      }
+    ],
+    "shouldSave": false
+  },
+  {
+    "testCaseId": "TC-N005",
+    "description": "Whitespace only in required fields",
+    "input": {
+      "name": "   ",
+      "email": "   ",
+      "phone": "",
+      "address": "",
+      "company": ""
+    },
+    "expectedErrors": [
+      {
+        "field": "name",
+        "message": "Name is required"
+      },
+      {
+        "field": "email",
+        "message": "Email is required"
+      }
+    ],
+    "shouldSave": false
+  }
+]
