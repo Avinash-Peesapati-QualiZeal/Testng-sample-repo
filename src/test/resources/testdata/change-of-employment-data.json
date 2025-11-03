@@ -1,0 +1,139 @@
+// Test data for 'change of employment' (INT-8038)
+[
+  {
+    "testCaseId": "INT-8038",
+    "description": "Happy path - valid change of employment for ASTM member.",
+    "member": {
+      "username": "astm_member1",
+      "password": "Password123!",
+      "memberId": "M12345678",
+      "currentOrganization": "OldOrg Inc.",
+      "accountAddress": "123 Main St, Springfield, IL, 62701, USA",
+      "phone": "+1-555-123-4567",
+      "email": "astm.member1@yopmail.com"
+    },
+    "newOrganization": {
+      "organizationName": "NewOrg LLC",
+      "organizationAddress": "456 New Ave, Chicago, IL, 60601, USA",
+      "startDate": "2024-06-01",
+      "cooperativeAgreementRepresentative": "Jane Doe"
+    },
+    "review": {
+      "expectedPhone": "+1-555-123-4567",
+      "expectedEmail": "astm.member1@yopmail.com"
+    },
+    "confirmation": {
+      "thankYouMessage": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "popupMessage": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account"
+    },
+    "notificationEmails": {
+      "staff": "stctestlab@yopmail.com",
+      "member": "astm.member1@yopmail.com"
+    },
+    "logs": {
+      "captureCOELogs": true
+    }
+  },
+  {
+    "testCaseId": "INT-8038",
+    "description": "Edge case - phone number changed during review.",
+    "member": {
+      "username": "astm_member2",
+      "password": "Password123!",
+      "memberId": "M87654321",
+      "currentOrganization": "OldOrg Inc.",
+      "accountAddress": "789 Elm St, Springfield, IL, 62701, USA",
+      "phone": "+1-555-987-6543",
+      "email": "astm.member2@yopmail.com"
+    },
+    "newOrganization": {
+      "organizationName": "EdgeOrg Ltd.",
+      "organizationAddress": "321 Edge Blvd, Chicago, IL, 60601, USA",
+      "startDate": "2024-06-02",
+      "cooperativeAgreementRepresentative": "John Smith"
+    },
+    "review": {
+      "expectedPhone": "+1-555-000-1111",
+      "expectedEmail": "astm.member2@yopmail.com"
+    },
+    "confirmation": {
+      "thankYouMessage": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "popupMessage": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account"
+    },
+    "notificationEmails": {
+      "staff": "stctestlab@yopmail.com",
+      "member": "astm.member2@yopmail.com"
+    },
+    "logs": {
+      "captureCOELogs": true
+    }
+  },
+  {
+    "testCaseId": "INT-8038",
+    "description": "Boundary case - minimal phone number and email input.",
+    "member": {
+      "username": "astm_member3",
+      "password": "Password123!",
+      "memberId": "M11223344",
+      "currentOrganization": "BoundaryOrg",
+      "accountAddress": "1 Boundary Rd, Edge City, 10000, USA",
+      "phone": "+1-1",
+      "email": "a@y.co"
+    },
+    "newOrganization": {
+      "organizationName": "MinOrg",
+      "organizationAddress": "2 Min St, Edge City, 10000, USA",
+      "startDate": "2024-06-03",
+      "cooperativeAgreementRepresentative": "Min Max"
+    },
+    "review": {
+      "expectedPhone": "+1-1",
+      "expectedEmail": "a@y.co"
+    },
+    "confirmation": {
+      "thankYouMessage": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "popupMessage": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account"
+    },
+    "notificationEmails": {
+      "staff": "stctestlab@yopmail.com",
+      "member": "a@y.co"
+    },
+    "logs": {
+      "captureCOELogs": true
+    }
+  },
+  {
+    "testCaseId": "INT-8038",
+    "description": "Cancel action - ensure phone/email revert to original.",
+    "member": {
+      "username": "astm_member4",
+      "password": "Password123!",
+      "memberId": "M99887766",
+      "currentOrganization": "CancelOrg",
+      "accountAddress": "9 Cancel St, Undo City, 90000, USA",
+      "phone": "+1-555-222-3333",
+      "email": "astm.member4@yopmail.com"
+    },
+    "newOrganization": {
+      "organizationName": "UndoOrg",
+      "organizationAddress": "10 Undo Ave, Undo City, 90000, USA",
+      "startDate": "2024-06-04",
+      "cooperativeAgreementRepresentative": "Cancel Rep"
+    },
+    "review": {
+      "expectedPhone": "+1-555-222-3333",
+      "expectedEmail": "astm.member4@yopmail.com"
+    },
+    "confirmation": {
+      "thankYouMessage": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "popupMessage": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account"
+    },
+    "notificationEmails": {
+      "staff": "stctestlab@yopmail.com",
+      "member": "astm.member4@yopmail.com"
+    },
+    "logs": {
+      "captureCOELogs": true
+    }
+  }
+]
