@@ -1,0 +1,163 @@
+// Test data for INT-8038-TC-001: change of employment
+[
+  {
+    "testCaseId": "INT-8038-TC-001",
+    "description": "Valid change of employment with all required fields",
+    "member": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe+coe@yopmail.com",
+      "phone": "+1-555-123-4567",
+      "accountAddress": "123 Main St, Springfield, IL, 62701, USA",
+      "currentOrganization": "OldOrg Inc.",
+      "memberId": "MEM123456"
+    },
+    "newOrganization": {
+      "name": "NewOrg Solutions LLC",
+      "address": "456 Elm St, Chicago, IL, 60601, USA",
+      "cooperativeAgreementRepresentative": "Jane Smith"
+    },
+    "review": {
+      "expectedPhone": "+1-555-123-4567",
+      "expectedEmail": "john.doe+coe@yopmail.com"
+    },
+    "confirmation": {
+      "thankYouMessage": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "confirmationPopup": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account"
+    },
+    "notificationEmails": [
+      "stctestlab@yopmail.com",
+      "john.doe+coe@yopmail.com"
+    ],
+    "logsRequired": true
+  },
+  {
+    "testCaseId": "INT-8038-TC-001",
+    "description": "Change of employment with edge case: minimum phone number length",
+    "member": {
+      "firstName": "Alice",
+      "lastName": "Edge",
+      "email": "alice.edge+coe@yopmail.com",
+      "phone": "12345",
+      "accountAddress": "789 Oak St, Peoria, IL, 61602, USA",
+      "currentOrganization": "EdgeOrg Ltd.",
+      "memberId": "MEM654321"
+    },
+    "newOrganization": {
+      "name": "BoundaryOrg Inc.",
+      "address": "101 Pine St, Aurora, IL, 60505, USA",
+      "cooperativeAgreementRepresentative": "Bob Brown"
+    },
+    "review": {
+      "expectedPhone": "12345",
+      "expectedEmail": "alice.edge+coe@yopmail.com"
+    },
+    "confirmation": {
+      "thankYouMessage": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "confirmationPopup": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account"
+    },
+    "notificationEmails": [
+      "stctestlab@yopmail.com",
+      "alice.edge+coe@yopmail.com"
+    ],
+    "logsRequired": true
+  },
+  {
+    "testCaseId": "INT-8038-TC-001",
+    "description": "Change of employment with edge case: maximum email length",
+    "member": {
+      "firstName": "Max",
+      "lastName": "Length",
+      "email": "max.length.abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890@yopmail.com",
+      "phone": "+1-555-987-6543",
+      "accountAddress": "222 Maple St, Rockford, IL, 61101, USA",
+      "currentOrganization": "MaxOrg Corp.",
+      "memberId": "MEM999999"
+    },
+    "newOrganization": {
+      "name": "LongOrg Name Holdings",
+      "address": "333 Cedar St, Joliet, IL, 60431, USA",
+      "cooperativeAgreementRepresentative": "Cathy Long"
+    },
+    "review": {
+      "expectedPhone": "+1-555-987-6543",
+      "expectedEmail": "max.length.abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890@yopmail.com"
+    },
+    "confirmation": {
+      "thankYouMessage": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "confirmationPopup": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account"
+    },
+    "notificationEmails": [
+      "stctestlab@yopmail.com",
+      "max.length.abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890@yopmail.com"
+    ],
+    "logsRequired": true
+  },
+  {
+    "testCaseId": "INT-8038-TC-001",
+    "description": "Change of employment with special characters in organization name",
+    "member": {
+      "firstName": "Special",
+      "lastName": "Char",
+      "email": "special.char+coe@yopmail.com",
+      "phone": "+1-555-000-1111",
+      "accountAddress": "444 Birch St, Naperville, IL, 60540, USA",
+      "currentOrganization": "Org!@#",
+      "memberId": "MEM777777"
+    },
+    "newOrganization": {
+      "name": "NewOrg*&^%$#@!",
+      "address": "555 Spruce St, Elgin, IL, 60120, USA",
+      "cooperativeAgreementRepresentative": "Derek O'Neil"
+    },
+    "review": {
+      "expectedPhone": "+1-555-000-1111",
+      "expectedEmail": "special.char+coe@yopmail.com"
+    },
+    "confirmation": {
+      "thankYouMessage": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "confirmationPopup": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account"
+    },
+    "notificationEmails": [
+      "stctestlab@yopmail.com",
+      "special.char+coe@yopmail.com"
+    ],
+    "logsRequired": true
+  },
+  {
+    "testCaseId": "INT-8038-TC-001",
+    "description": "Change of employment with cancel action (should reset phone/email)",
+    "member": {
+      "firstName": "Cancel",
+      "lastName": "Action",
+      "email": "cancel.action+coe@yopmail.com",
+      "phone": "+1-555-222-3333",
+      "accountAddress": "666 Willow St, Evanston, IL, 60201, USA",
+      "currentOrganization": "CancelOrg LLC",
+      "memberId": "MEM888888"
+    },
+    "newOrganization": {
+      "name": "ResetOrg Inc.",
+      "address": "777 Aspen St, Waukegan, IL, 60085, USA",
+      "cooperativeAgreementRepresentative": "Emily Reset"
+    },
+    "review": {
+      "expectedPhone": "+1-555-222-3333",
+      "expectedEmail": "cancel.action+coe@yopmail.com"
+    },
+    "confirmation": {
+      "thankYouMessage": "Thank You! The change of employment application has been submitted. You will receive a confirmation email when the application is processed. Upon receipt of the confirmation email, you will be able to add committees/subcommittees to your profile.",
+      "confirmationPopup": "Thank you Your Request has been Submitted. The changes may take 1-3 business days to process and appear on your account"
+    },
+    "notificationEmails": [
+      "stctestlab@yopmail.com",
+      "cancel.action+coe@yopmail.com"
+    ],
+    "logsRequired": true,
+    "cancelAction": {
+      "resetFields": ["phone", "email"],
+      "expectedResetPhone": "+1-555-222-3333",
+      "expectedResetEmail": "cancel.action+coe@yopmail.com"
+    }
+  }
+]
