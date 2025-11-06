@@ -1,0 +1,79 @@
+// Test data for TC-N004: Maximum Character Limit for Name Field
+{
+  "testCaseId": "TC-N004",
+  "testCaseName": "Maximum Character Limit for Name Field",
+  "objective": "Check system behavior when the Name field is filled to its maximum allowed character limit.",
+  "priority": "Medium",
+  "preconditions": [
+    "User is logged into the CRM system.",
+    "User navigates to the contact creation screen."
+  ],
+  "fields": {
+    "name": {
+      "description": "Contact Name field - maximum allowed characters",
+      "maxLength": 255,
+      "testValues": [
+        {
+          "label": "Boundary - Maximum",
+          "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "length": 255,
+          "expectedResult": "Accepted, confirmation message displayed"
+        },
+        {
+          "label": "Boundary - One Below Maximum",
+          "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "length": 254,
+          "expectedResult": "Accepted, confirmation message displayed"
+        },
+        {
+          "label": "Boundary - One Above Maximum",
+          "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "length": 256,
+          "expectedResult": "Rejected or truncated, error message displayed"
+        },
+        {
+          "label": "Empty String",
+          "value": "",
+          "length": 0,
+          "expectedResult": "Rejected, error message displayed"
+        },
+        {
+          "label": "Special Characters",
+          "value": "!@#$%^&*()_+{}|:<>?~`-=[]\\;',./",
+          "length": 32,
+          "expectedResult": "Accepted if allowed, confirmation or error message displayed"
+        }
+      ]
+    }
+  },
+  "locators": [
+    {
+      "name": "Name Field",
+      "type": "id",
+      "value": "contact_name"
+    },
+    {
+      "name": "Save Button",
+      "type": "id",
+      "value": "save_contact"
+    },
+    {
+      "name": "Confirmation Message",
+      "type": "xpath",
+      "value": "//div[@class='alert-success']"
+    },
+    {
+      "name": "Error Message",
+      "type": "xpath",
+      "value": "//div[@class='alert-danger']"
+    },
+    {
+      "name": "Contact List",
+      "type": "id",
+      "value": "contact_list"
+    }
+  ],
+  "postConditions": [
+    "Contact is saved in the CRM system with the specified details."
+  ]
+}
