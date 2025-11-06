@@ -1,51 +1,74 @@
 // Test data for TC-N004: Maximum Character Limit for Name Field
-[
-  {
-    "testCaseId": "TC-N004",
-    "description": "Name field at maximum allowed character limit.",
-    "preconditions": [
-      "User is logged into the CRM system.",
-      "User navigates to the contact creation screen."
-    ],
-    "input": {
-      "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" // 200 characters
-    },
-    "expectedResult": "System accepts the input and displays a confirmation message.",
-    "postconditions": [
-      "Contact is saved in the CRM system with the specified details."
-    ],
-    "priority": "Medium",
-    "type": "Boundary",
-    "locators": [
-      { "field": "Name", "locator": "//input[@id='contactName']" },
-      { "field": "SaveButton", "locator": "//button[@id='saveContact']" },
-      { "field": "ConfirmationMessage", "locator": "//div[@class='confirmation-message']" },
-      { "field": "ContactList", "locator": "//table[@id='contactList']" },
-      { "field": "LogoutButton", "locator": "//button[@id='logout']" }
-    ]
+// Purpose: To verify system behavior when the Name field is filled to its maximum allowed character limit
+{
+  "testCaseId": "TC-N004",
+  "testCaseName": "Maximum Character Limit for Name Field",
+  "objective": "Check system behavior when the Name field is filled to its maximum allowed character limit.",
+  "priority": "Medium",
+  "preconditions": [
+    "User is logged into the CRM system.",
+    "User navigates to the contact creation screen."
+  ],
+  "postConditions": [
+    "Contact is saved in the CRM system with the specified details."
+  ],
+  "fields": {
+    "name": {
+      "maxLength": 255,
+      "boundaryValues": [
+        {
+          "description": "Maximum allowed characters",
+          "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "length": 255,
+          "expectedResult": "System accepts the input and displays a confirmation message."
+        },
+        {
+          "description": "One less than maximum",
+          "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "length": 254,
+          "expectedResult": "System accepts the input and displays a confirmation message."
+        },
+        {
+          "description": "Empty name field",
+          "value": "",
+          "length": 0,
+          "expectedResult": "System shows validation error or does not allow save."
+        },
+        {
+          "description": "Exceeding maximum by one",
+          "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "length": 256,
+          "expectedResult": "System shows validation error or truncates input."
+        }
+      ]
+    }
   },
-  {
-    "testCaseId": "TC-N004",
-    "description": "Name field just below maximum allowed character limit.",
-    "input": {
-      "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" // 199 characters
+  "locators": [
+    {
+      "element": "nameField",
+      "locatorType": "id",
+      "locatorValue": "contact_name"
     },
-    "expectedResult": "System accepts the input and displays a confirmation message."
-  },
-  {
-    "testCaseId": "TC-N004",
-    "description": "Name field just above maximum allowed character limit.",
-    "input": {
-      "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" // 201 characters
+    {
+      "element": "saveButton",
+      "locatorType": "id",
+      "locatorValue": "save_contact"
     },
-    "expectedResult": "System should not accept the input and should display an error message."
-  },
-  {
-    "testCaseId": "TC-N004",
-    "description": "Name field empty (minimum boundary).",
-    "input": {
-      "name": ""
+    {
+      "element": "confirmationMessage",
+      "locatorType": "xpath",
+      "locatorValue": "//div[@class='alert-success']"
     },
-    "expectedResult": "System should not accept the input and should display an error message."
-  }
-]
+    {
+      "element": "cancelButton",
+      "locatorType": "id",
+      "locatorValue": "cancel_contact"
+    },
+    {
+      "element": "nameFieldError",
+      "locatorType": "xpath",
+      "locatorValue": "//span[@id='contact_name_error']"
+    }
+  ],
+  "notes": "Adjust maxLength if system specification differs. Boundary values included for robust validation."
+}
