@@ -1,0 +1,76 @@
+{
+  "testCaseId": "INT-123",
+  "testCaseName": "validate header components",
+  "priority": "Medium",
+  "expectedResult": "User should be able to see the header components successfully",
+  "headerComponents": [
+    {
+      "componentName": "Logo",
+      "locator": {
+        "type": "xpath",
+        "value": "//header//img[@alt='Company Logo']"
+      },
+      "expectedVisible": true,
+      "expectedAltText": "Company Logo"
+    },
+    {
+      "componentName": "Navigation Menu",
+      "locator": {
+        "type": "css",
+        "value": "header nav.main-nav"
+      },
+      "expectedVisible": true,
+      "expectedMenuItems": [
+        "Home",
+        "Products",
+        "About",
+        "Contact"
+      ]
+    },
+    {
+      "componentName": "Search Bar",
+      "locator": {
+        "type": "id",
+        "value": "header-search-input"
+      },
+      "expectedVisible": true,
+      "placeholderText": "Search..."
+    },
+    {
+      "componentName": "User Profile Icon",
+      "locator": {
+        "type": "css",
+        "value": "header .user-profile"
+      },
+      "expectedVisible": true,
+      "expectedTooltip": "Profile"
+    },
+    {
+      "componentName": "Cart Icon",
+      "locator": {
+        "type": "xpath",
+        "value": "//header//a[@id='cart-icon']"
+      },
+      "expectedVisible": true,
+      "expectedBadgeMin": 0,
+      "expectedBadgeMax": 99
+    }
+  ],
+  "edgeCases": [
+    {
+      "description": "Cart icon badge displays 0 when cart is empty",
+      "cartItemCount": 0,
+      "expectedBadge": "0"
+    },
+    {
+      "description": "Cart icon badge displays 99+ when cart exceeds 99 items",
+      "cartItemCount": 120,
+      "expectedBadge": "99+"
+    },
+    {
+      "description": "User profile icon not visible when not logged in",
+      "userLoggedIn": false,
+      "expectedVisible": false
+    }
+  ]
+}
