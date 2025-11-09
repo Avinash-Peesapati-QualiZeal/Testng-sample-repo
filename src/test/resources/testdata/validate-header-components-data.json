@@ -1,0 +1,63 @@
+// Test data for INT-123: validate header components
+// This file defines the expected header components and their locators for UI validation
+{
+  "testCaseId": "INT-123",
+  "testCaseName": "validate header components",
+  "priority": "Medium",
+  "expectedResult": "User should be able to see the header components successfully",
+  "headerComponents": [
+    {
+      "componentName": "Logo",
+      "locator": {
+        "type": "xpath",
+        "value": "//header//img[@alt='Company Logo']"
+      },
+      "expectedVisible": true
+    },
+    {
+      "componentName": "Navigation Menu",
+      "locator": {
+        "type": "css",
+        "value": "header nav.main-nav"
+      },
+      "expectedVisible": true
+    },
+    {
+      "componentName": "Search Bar",
+      "locator": {
+        "type": "id",
+        "value": "header-search-input"
+      },
+      "expectedVisible": true
+    },
+    {
+      "componentName": "Profile Icon",
+      "locator": {
+        "type": "css",
+        "value": "header .profile-icon"
+      },
+      "expectedVisible": true
+    },
+    {
+      "componentName": "Notifications",
+      "locator": {
+        "type": "xpath",
+        "value": "//header//button[@aria-label='Notifications']"
+      },
+      "expectedVisible": true
+    }
+  ],
+  "edgeCases": [
+    {
+      "scenario": "Header not loaded",
+      "expectedVisible": false,
+      "description": "Validate that the test fails if the header is not present."
+    },
+    {
+      "scenario": "Partial header load",
+      "missingComponents": ["Profile Icon"],
+      "expectedVisible": false,
+      "description": "Validate that the test fails if any header component is missing."
+    }
+  ]
+}
