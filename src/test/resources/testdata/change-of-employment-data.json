@@ -1,0 +1,152 @@
+// Test data for INT-8038: change of employment
+// Purpose: To support functional test automation for employment change scenarios in ASTM member application
+{
+  "meta": {
+    "testCaseId": "INT-8038",
+    "testCaseName": "change of employment",
+    "objective": "Verify user can change employment details in ASTM member application.",
+    "priority": "Medium",
+    "type": "Functional",
+    "author": "Test Data Architect",
+    "createdDate": "2025-11-09"
+  },
+  "environments": [
+    {
+      "name": "stage",
+      "memberAppUrl": "https://stage-member.astm.org/",
+      "iaUrl": "https://stage-ia.astm.org/"
+    }
+  ],
+  "users": [
+    {
+      "email": "stctestlab@yopmail.com",
+      "password": "<to-be-supplied>",
+      "role": "ASTM Member",
+      "valid": true
+    }
+  ],
+  "employmentChangeScenarios": [
+    {
+      "description": "Change all employment fields with valid data",
+      "input": {
+        "companyName": "Test Automation Corp",
+        "jobTitle": "Senior QA Engineer",
+        "department": "Quality Assurance",
+        "address": {
+          "street": "123 Test Lane",
+          "city": "Testville",
+          "state": "CA",
+          "zip": "90001",
+          "country": "USA"
+        },
+        "phone": "+1-555-123-4567",
+        "startDate": "2022-01-01",
+        "endDate": "2025-12-31"
+      },
+      "expectedOutcome": "Employment details updated successfully."
+    },
+    {
+      "description": "Edge: Minimum character limits for company name (1 char)",
+      "input": {
+        "companyName": "A",
+        "jobTitle": "QA",
+        "department": "Q",
+        "address": {
+          "street": "1",
+          "city": "B",
+          "state": "C",
+          "zip": "1",
+          "country": "U"
+        },
+        "phone": "1",
+        "startDate": "2023-01-01",
+        "endDate": "2023-12-31"
+      },
+      "expectedOutcome": "Employment details updated successfully."
+    },
+    {
+      "description": "Edge: Maximum character limits for company name (100 chars)",
+      "input": {
+        "companyName": "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMN",
+        "jobTitle": "Automation Engineer",
+        "department": "Engineering",
+        "address": {
+          "street": "9999 Long Street Name That Exceeds Normal Length For Testing Purposes",
+          "city": "Longcityname",
+          "state": "TX",
+          "zip": "99999-9999",
+          "country": "United States of America"
+        },
+        "phone": "+1-555-999-9999",
+        "startDate": "2020-05-15",
+        "endDate": "2021-05-15"
+      },
+      "expectedOutcome": "Employment details updated successfully."
+    },
+    {
+      "description": "Negative: Invalid phone number format",
+      "input": {
+        "companyName": "Test Company",
+        "jobTitle": "QA Tester",
+        "department": "QA",
+        "address": {
+          "street": "12 Main St",
+          "city": "Test City",
+          "state": "NY",
+          "zip": "10001",
+          "country": "USA"
+        },
+        "phone": "invalid-phone",
+        "startDate": "2024-01-01",
+        "endDate": "2024-12-31"
+      },
+      "expectedOutcome": "Error: Invalid phone number format."
+    },
+    {
+      "description": "Negative: End date before start date",
+      "input": {
+        "companyName": "Company X",
+        "jobTitle": "Engineer",
+        "department": "Development",
+        "address": {
+          "street": "456 Dev Rd",
+          "city": "Dev City",
+          "state": "WA",
+          "zip": "98001",
+          "country": "USA"
+        },
+        "phone": "+1-555-222-3333",
+        "startDate": "2025-12-31",
+        "endDate": "2025-01-01"
+      },
+      "expectedOutcome": "Error: End date cannot be before start date."
+    }
+  ],
+  "locators": [
+    {
+      "name": "employmentSectionLink",
+      "type": "xpath",
+      "value": "//a[@href='/employment']"
+    },
+    {
+      "name": "editEmploymentButton",
+      "type": "css",
+      "value": "button.edit-employment"
+    },
+    {
+      "name": "companyNameInput",
+      "type": "id",
+      "value": "companyName"
+    },
+    {
+      "name": "saveButton",
+      "type": "css",
+      "value": "button.save-employment"
+    },
+    {
+      "name": "successMessage",
+      "type": "css",
+      "value": ".alert-success"
+    }
+  ]
+}
