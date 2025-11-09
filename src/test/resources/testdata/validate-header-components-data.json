@@ -1,0 +1,46 @@
+{
+  "testCaseId": "INT-123",
+  "testCaseName": "validate header components",
+  "priority": "Medium",
+  "url": "https://stage-secure.astm.org/login?redirectUrl=aHR0cHM6Ly9zdGFnZS13d3cuYXN0bS5vcmcv",
+  "expectedResult": "User should be able to see the header components successfully",
+  "headerComponents": [
+    {
+      "componentName": "Logo",
+      "locator": "//header//img[@alt='ASTM Logo']",
+      "expectedVisible": true
+    },
+    {
+      "componentName": "Navigation Menu",
+      "locator": "//header//nav",
+      "expectedVisible": true
+    },
+    {
+      "componentName": "Search Bar",
+      "locator": "//header//input[@type='search']",
+      "expectedVisible": true
+    },
+    {
+      "componentName": "User Profile Icon",
+      "locator": "//header//div[contains(@class,'user-profile')]",
+      "expectedVisible": true
+    },
+    {
+      "componentName": "Notifications Icon",
+      "locator": "//header//button[contains(@class,'notifications')]",
+      "expectedVisible": true
+    }
+  ],
+  "edgeCases": [
+    {
+      "description": "Header components should be visible on page reload",
+      "action": "reloadPage",
+      "expected": "All header components remain visible after reload"
+    },
+    {
+      "description": "Header components should be visible after login",
+      "action": "login",
+      "expected": "All header components are visible post-login"
+    }
+  ]
+}
