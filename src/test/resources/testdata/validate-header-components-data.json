@@ -1,0 +1,67 @@
+// Test data for INT-123: validate header components
+{
+  "testCaseId": "INT-123",
+  "testCaseName": "validate header components",
+  "priority": "Medium",
+  "expectedResult": "User should be able to see the header components successfully",
+  "headerComponents": [
+    {
+      "componentName": "Logo",
+      "locator": {
+        "type": "xpath",
+        "value": "//header//img[@alt='Company Logo']"
+      },
+      "expectedVisible": true
+    },
+    {
+      "componentName": "Navigation Menu",
+      "locator": {
+        "type": "css",
+        "value": "header nav.main-menu"
+      },
+      "expectedVisible": true
+    },
+    {
+      "componentName": "Search Bar",
+      "locator": {
+        "type": "id",
+        "value": "header-search"
+      },
+      "expectedVisible": true
+    },
+    {
+      "componentName": "User Profile Icon",
+      "locator": {
+        "type": "css",
+        "value": "header .user-profile"
+      },
+      "expectedVisible": true
+    },
+    {
+      "componentName": "Notifications",
+      "locator": {
+        "type": "xpath",
+        "value": "//header//div[@class='notifications']"
+      },
+      "expectedVisible": true
+    }
+  ],
+  "edgeCases": [
+    {
+      "description": "Header components should be visible on different screen resolutions (responsive)",
+      "screenResolutions": [
+        { "width": 1920, "height": 1080 },
+        { "width": 1366, "height": 768 },
+        { "width": 375, "height": 667 }
+      ]
+    },
+    {
+      "description": "Header components should be visible for unauthenticated users",
+      "userState": "unauthenticated"
+    },
+    {
+      "description": "Header components should be visible for authenticated users",
+      "userState": "authenticated"
+    }
+  ]
+}
