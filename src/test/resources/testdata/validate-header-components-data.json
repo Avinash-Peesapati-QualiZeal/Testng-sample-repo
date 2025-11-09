@@ -1,0 +1,54 @@
+// Test Data for INT-123: validate header components
+// This file contains all necessary data for the test case execution
+{
+  "testCaseId": "INT-123",
+  "testCaseName": "validate header components",
+  "priority": "Medium",
+  "url": "https://stage-secure.astm.org/login?redirectUrl=aHR0cHM6Ly9zdGFnZS13d3cuYXN0bS5vcmcv",
+  "expectedResult": "User should be able to see the header components successfully",
+  "headerComponents": [
+    {
+      "componentName": "Logo",
+      "locator": "//header//img[@alt='ASTM Logo']",
+      "expectedVisible": true
+    },
+    {
+      "componentName": "Navigation Menu",
+      "locator": "//header//nav",
+      "expectedVisible": true
+    },
+    {
+      "componentName": "Search Bar",
+      "locator": "//header//input[@type='search']",
+      "expectedVisible": true
+    },
+    {
+      "componentName": "User Profile Icon",
+      "locator": "//header//div[contains(@class,'user-profile')]",
+      "expectedVisible": true
+    },
+    {
+      "componentName": "Logout Button",
+      "locator": "//header//button[contains(text(),'Logout')]",
+      "expectedVisible": true
+    }
+  ],
+  "edgeCases": [
+    {
+      "description": "Header components should be visible on different screen sizes (responsive)",
+      "screenSizes": [
+        { "width": 1920, "height": 1080 },
+        { "width": 1366, "height": 768 },
+        { "width": 375, "height": 667 }
+      ]
+    },
+    {
+      "description": "Header components should be visible for users with different roles",
+      "userRoles": [
+        "admin",
+        "standard_user",
+        "guest"
+      ]
+    }
+  ]
+}
