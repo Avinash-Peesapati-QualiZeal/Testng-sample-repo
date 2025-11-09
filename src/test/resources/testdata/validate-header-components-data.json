@@ -1,0 +1,55 @@
+// Test data for INT-123: validate header components
+// This file defines the expected header components for UI validation
+{
+  "testCaseId": "INT-123",
+  "testCaseName": "validate header components",
+  "priority": "Medium",
+  "expectedHeaderComponents": [
+    {
+      "componentName": "Logo",
+      "locator": "//header//img[@alt='Company Logo']",
+      "expectedVisible": true,
+      "edgeCases": [
+        "Logo should be visible on all pages",
+        "Logo should have correct alt text"
+      ]
+    },
+    {
+      "componentName": "Navigation Menu",
+      "locator": "//header//nav",
+      "expectedVisible": true,
+      "edgeCases": [
+        "Menu should collapse on mobile viewport",
+        "Menu should highlight active page"
+      ]
+    },
+    {
+      "componentName": "Search Bar",
+      "locator": "//header//input[@type='search']",
+      "expectedVisible": true,
+      "edgeCases": [
+        "Search bar should be enabled",
+        "Search bar should have placeholder text"
+      ]
+    },
+    {
+      "componentName": "User Profile Icon",
+      "locator": "//header//div[contains(@class,'user-profile')]",
+      "expectedVisible": true,
+      "edgeCases": [
+        "Profile icon should show dropdown on click",
+        "Profile icon should be hidden when not logged in"
+      ]
+    },
+    {
+      "componentName": "Notifications",
+      "locator": "//header//span[contains(@class,'notification-bell')]",
+      "expectedVisible": true,
+      "edgeCases": [
+        "Notification bell should show count if notifications exist",
+        "Notification bell should be clickable"
+      ]
+    }
+  ],
+  "notes": "This test data file enumerates the expected header components for INT-123. Locators are provided for Selenium usage. Edge cases are included for robustness."
+}
