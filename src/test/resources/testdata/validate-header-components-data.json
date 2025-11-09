@@ -1,0 +1,47 @@
+// Test data for INT-123: validate header components
+[
+  {
+    "testCaseId": "INT-123",
+    "testCaseName": "validate header components",
+    "priority": "Medium",
+    "url": "https://stage-secure.astm.org/login?redirectUrl=aHR0cHM6Ly9zdGFnZS13d3cuYXN0bS5vcmcv",
+    "expectedResult": "User should be able to see the header components successfully",
+    "headerComponents": [
+      {
+        "componentName": "Logo",
+        "locator": "//header//img[@alt='ASTM Logo']",
+        "description": "ASTM logo is visible in the header"
+      },
+      {
+        "componentName": "Search Bar",
+        "locator": "//header//input[@type='search']",
+        "description": "Search bar is present in the header"
+      },
+      {
+        "componentName": "User Profile Icon",
+        "locator": "//header//div[contains(@class,'user-profile')]",
+        "description": "User profile icon is displayed in the header"
+      },
+      {
+        "componentName": "Notifications",
+        "locator": "//header//button[contains(@aria-label,'Notifications')]",
+        "description": "Notifications bell/button is present in the header"
+      },
+      {
+        "componentName": "Help",
+        "locator": "//header//a[contains(@href,'help')]",
+        "description": "Help link/button is available in the header"
+      }
+    ],
+    "edgeCases": [
+      {
+        "scenario": "Header components not visible after login",
+        "expectedBehavior": "Test should fail and log missing components"
+      },
+      {
+        "scenario": "Header partially loaded",
+        "expectedBehavior": "Test should identify which components are missing"
+      }
+    ]
+  }
+]
