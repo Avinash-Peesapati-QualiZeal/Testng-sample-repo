@@ -1,0 +1,66 @@
+// Test Data for INT-123: validate header components
+// This file contains all necessary data to execute the test case for validating header components.
+{
+  "testCaseId": "INT-123",
+  "testCaseName": "validate header components",
+  "priority": "Medium",
+  "url": "https://stage-secure.astm.org/login?redirectUrl=aHR0cHM6Ly9zdGFnZS13d3cuYXN0bS5vcmcv",
+  "expectedResult": "User should be able to see the header components successfully",
+  "headerComponents": [
+    {
+      "componentName": "Logo",
+      "locator": {
+        "type": "css",
+        "value": "header .astm-logo"
+      },
+      "visible": true
+    },
+    {
+      "componentName": "Navigation Menu",
+      "locator": {
+        "type": "css",
+        "value": "header nav.main-navigation"
+      },
+      "visible": true
+    },
+    {
+      "componentName": "User Profile Dropdown",
+      "locator": {
+        "type": "css",
+        "value": "header .user-profile-dropdown"
+      },
+      "visible": true
+    },
+    {
+      "componentName": "Search Bar",
+      "locator": {
+        "type": "css",
+        "value": "header .search-bar"
+      },
+      "visible": true
+    },
+    {
+      "componentName": "Notifications Icon",
+      "locator": {
+        "type": "css",
+        "value": "header .notifications-icon"
+      },
+      "visible": true
+    }
+  ],
+  "edgeCases": [
+    {
+      "description": "Header components should be visible on different screen sizes (responsive)",
+      "screenSizes": [
+        { "width": 1920, "height": 1080 },
+        { "width": 1366, "height": 768 },
+        { "width": 768, "height": 1024 },
+        { "width": 375, "height": 667 }
+      ]
+    },
+    {
+      "description": "Header components should be visible for different user roles",
+      "userRoles": ["admin", "member", "guest"]
+    }
+  ]
+}
