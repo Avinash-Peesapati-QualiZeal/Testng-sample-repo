@@ -1,0 +1,42 @@
+// Test data for INT-123: validate header components
+// This file defines the expected header components and their locators for UI validation
+[
+  {
+    "testCaseId": "INT-123",
+    "testCaseName": "validate header components",
+    "priority": "Medium",
+    "expectedResult": "User should be able to see the header components successfully",
+    "headerComponents": [
+      {
+        "componentName": "Logo",
+        "locatorType": "xpath",
+        "locatorValue": "//header//img[@alt='Company Logo']",
+        "description": "Company logo should be visible in the header"
+      },
+      {
+        "componentName": "Navigation Menu",
+        "locatorType": "css",
+        "locatorValue": "header nav.main-nav",
+        "description": "Main navigation menu should be present in the header"
+      },
+      {
+        "componentName": "Search Bar",
+        "locatorType": "id",
+        "locatorValue": "header-search-input",
+        "description": "Search input field should be visible in the header"
+      },
+      {
+        "componentName": "User Profile Icon",
+        "locatorType": "css",
+        "locatorValue": "header .user-profile-icon",
+        "description": "User profile icon should be displayed in the header"
+      },
+      {
+        "componentName": "Notifications Bell",
+        "locatorType": "xpath",
+        "locatorValue": "//header//button[@aria-label='Notifications']",
+        "description": "Notifications bell should be present in the header"
+      }
+    ]
+  }
+]
