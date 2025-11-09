@@ -1,0 +1,82 @@
+{
+  "testCaseId": "INT-123",
+  "testCaseName": "validate header components",
+  "priority": "Medium",
+  "expectedResult": "User should be able to see the header components successfully",
+  "headerComponents": [
+    {
+      "componentName": "Logo",
+      "locator": {
+        "type": "xpath",
+        "value": "//header//img[@alt='Logo']"
+      },
+      "expectedVisibility": true,
+      "edgeCases": [
+        {
+          "description": "Logo not loaded",
+          "expectedVisibility": false
+        }
+      ]
+    },
+    {
+      "componentName": "Navigation Menu",
+      "locator": {
+        "type": "css",
+        "value": "header nav.main-nav"
+      },
+      "expectedVisibility": true,
+      "edgeCases": [
+        {
+          "description": "Menu collapsed on mobile viewport",
+          "viewport": "mobile",
+          "expectedVisibility": true
+        }
+      ]
+    },
+    {
+      "componentName": "Search Bar",
+      "locator": {
+        "type": "id",
+        "value": "header-search"
+      },
+      "expectedVisibility": true,
+      "edgeCases": [
+        {
+          "description": "Search bar hidden for guest user",
+          "userType": "guest",
+          "expectedVisibility": true
+        }
+      ]
+    },
+    {
+      "componentName": "User Profile Icon",
+      "locator": {
+        "type": "css",
+        "value": "header .user-profile"
+      },
+      "expectedVisibility": true,
+      "edgeCases": [
+        {
+          "description": "Profile icon hidden for anonymous user",
+          "userType": "anonymous",
+          "expectedVisibility": false
+        }
+      ]
+    },
+    {
+      "componentName": "Notifications Bell",
+      "locator": {
+        "type": "xpath",
+        "value": "//header//button[@aria-label='Notifications']"
+      },
+      "expectedVisibility": true,
+      "edgeCases": [
+        {
+          "description": "No notifications",
+          "notificationsCount": 0,
+          "expectedVisibility": true
+        }
+      ]
+    }
+  ]
+}
