@@ -1,0 +1,69 @@
+{
+  "testCaseId": "INT-8038",
+  "testCaseName": "change of employment",
+  "objective": "Verify the process of changing employment through the ASTM member application.",
+  "priority": "Medium",
+  "type": "Functional",
+  "testData": [
+    {
+      "description": "Standard employment change",
+      "URL": "https://stage-member.astm.org/",
+      "Email": "stctestlab@yopmail.com",
+      "IA_URL": "https://stage-ia.astm.org/",
+      "Secure_URL": "https://stage-secure.astm.org/",
+      "currentEmployer": "Acme Corp",
+      "newEmployer": "Beta Industries",
+      "employmentChangeDate": "2024-06-01",
+      "reasonForChange": "Career advancement",
+      "expectedOutcome": "User navigates through the change of employment process successfully."
+    },
+    {
+      "description": "Edge case: Empty new employer field",
+      "URL": "https://stage-member.astm.org/",
+      "Email": "stctestlab@yopmail.com",
+      "IA_URL": "https://stage-ia.astm.org/",
+      "Secure_URL": "https://stage-secure.astm.org/",
+      "currentEmployer": "Acme Corp",
+      "newEmployer": "",
+      "employmentChangeDate": "2024-06-01",
+      "reasonForChange": "Career advancement",
+      "expectedOutcome": "System prompts user to enter new employer."
+    },
+    {
+      "description": "Edge case: Future employment change date",
+      "URL": "https://stage-member.astm.org/",
+      "Email": "stctestlab@yopmail.com",
+      "IA_URL": "https://stage-ia.astm.org/",
+      "Secure_URL": "https://stage-secure.astm.org/",
+      "currentEmployer": "Acme Corp",
+      "newEmployer": "Gamma Solutions",
+      "employmentChangeDate": "2025-12-31",
+      "reasonForChange": "Relocation",
+      "expectedOutcome": "System accepts future date and processes request."
+    },
+    {
+      "description": "Edge case: Special characters in employer name",
+      "URL": "https://stage-member.astm.org/",
+      "Email": "stctestlab@yopmail.com",
+      "IA_URL": "https://stage-ia.astm.org/",
+      "Secure_URL": "https://stage-secure.astm.org/",
+      "currentEmployer": "Acme Corp",
+      "newEmployer": "!@#Beta*&^%",
+      "employmentChangeDate": "2024-06-01",
+      "reasonForChange": "Other",
+      "expectedOutcome": "System validates and accepts special characters if allowed."
+    },
+    {
+      "description": "Edge case: Maximum character length for employer name",
+      "URL": "https://stage-member.astm.org/",
+      "Email": "stctestlab@yopmail.com",
+      "IA_URL": "https://stage-ia.astm.org/",
+      "Secure_URL": "https://stage-secure.astm.org/",
+      "currentEmployer": "Acme Corp",
+      "newEmployer": "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "employmentChangeDate": "2024-06-01",
+      "reasonForChange": "Other",
+      "expectedOutcome": "System accepts employer name up to maximum allowed length."
+    }
+  ]
+}
