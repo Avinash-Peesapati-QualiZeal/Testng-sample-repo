@@ -1,0 +1,45 @@
+// Test data for INT-123: validate header components
+// Generated for Selenium-TestNG test automation
+{
+  "testCaseId": "INT-123",
+  "testCaseName": "validate header components",
+  "priority": "Medium",
+  "url": "https://stage-secure.astm.org/login?redirectUrl=aHR0cHM6Ly9zdGFnZS13d3cuYXN0bS5vcmcv",
+  "headerComponents": [
+    {
+      "componentName": "Logo",
+      "expectedVisible": true,
+      "description": "ASTM logo should be visible in the header."
+    },
+    {
+      "componentName": "Navigation Menu",
+      "expectedVisible": true,
+      "description": "Navigation menu should be present and accessible."
+    },
+    {
+      "componentName": "Search Bar",
+      "expectedVisible": true,
+      "description": "Search bar should be present in the header."
+    },
+    {
+      "componentName": "User Profile Icon",
+      "expectedVisible": true,
+      "description": "User profile icon should be displayed when logged in."
+    },
+    {
+      "componentName": "Logout Button",
+      "expectedVisible": true,
+      "description": "Logout button should be available in the header."
+    }
+  ],
+  "edgeCases": [
+    {
+      "scenario": "User not logged in",
+      "expectedHeaderComponents": ["Logo", "Navigation Menu", "Search Bar"]
+    },
+    {
+      "scenario": "User logged in",
+      "expectedHeaderComponents": ["Logo", "Navigation Menu", "Search Bar", "User Profile Icon", "Logout Button"]
+    }
+  ]
+}
