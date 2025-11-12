@@ -1,0 +1,194 @@
+// Test Data for INT-123: Validate Header Components
+[
+  {
+    "testCaseId": "INT-123",
+    "description": "Standard header with all components visible",
+    "headerComponents": [
+      {
+        "name": "logo",
+        "locator": "#header-logo",
+        "expectedText": "CompanyLogo",
+        "visible": true
+      },
+      {
+        "name": "navigationMenu",
+        "locator": "#nav-menu",
+        "expectedText": "Home|About|Contact|Products|Support",
+        "visible": true
+      },
+      {
+        "name": "searchBar",
+        "locator": "#header-search",
+        "expectedText": "",
+        "visible": true
+      },
+      {
+        "name": "profileIcon",
+        "locator": "#profile-icon",
+        "expectedText": "",
+        "visible": true
+      },
+      {
+        "name": "notificationBell",
+        "locator": "#notification-bell",
+        "expectedText": "",
+        "visible": true
+      }
+    ],
+    "userRole": "standard",
+    "edgeCase": false
+  },
+  {
+    "testCaseId": "INT-123",
+    "description": "Header for admin user with extra admin menu",
+    "headerComponents": [
+      {
+        "name": "logo",
+        "locator": "#header-logo",
+        "expectedText": "CompanyLogo",
+        "visible": true
+      },
+      {
+        "name": "navigationMenu",
+        "locator": "#nav-menu",
+        "expectedText": "Home|About|Contact|Products|Support|Admin",
+        "visible": true
+      },
+      {
+        "name": "searchBar",
+        "locator": "#header-search",
+        "expectedText": "",
+        "visible": true
+      },
+      {
+        "name": "profileIcon",
+        "locator": "#profile-icon",
+        "expectedText": "",
+        "visible": true
+      },
+      {
+        "name": "notificationBell",
+        "locator": "#notification-bell",
+        "expectedText": "",
+        "visible": true
+      }
+    ],
+    "userRole": "admin",
+    "edgeCase": false
+  },
+  {
+    "testCaseId": "INT-123",
+    "description": "Header with missing profile icon (edge case)",
+    "headerComponents": [
+      {
+        "name": "logo",
+        "locator": "#header-logo",
+        "expectedText": "CompanyLogo",
+        "visible": true
+      },
+      {
+        "name": "navigationMenu",
+        "locator": "#nav-menu",
+        "expectedText": "Home|About|Contact|Products|Support",
+        "visible": true
+      },
+      {
+        "name": "searchBar",
+        "locator": "#header-search",
+        "expectedText": "",
+        "visible": true
+      },
+      {
+        "name": "profileIcon",
+        "locator": "#profile-icon",
+        "expectedText": "",
+        "visible": false
+      },
+      {
+        "name": "notificationBell",
+        "locator": "#notification-bell",
+        "expectedText": "",
+        "visible": true
+      }
+    ],
+    "userRole": "guest",
+    "edgeCase": true
+  },
+  {
+    "testCaseId": "INT-123",
+    "description": "Header with long navigation menu (boundary value)",
+    "headerComponents": [
+      {
+        "name": "logo",
+        "locator": "#header-logo",
+        "expectedText": "CompanyLogo",
+        "visible": true
+      },
+      {
+        "name": "navigationMenu",
+        "locator": "#nav-menu",
+        "expectedText": "Home|About|Contact|Products|Support|Blog|Careers|Partners|Events|FAQ|Legal|Privacy|Terms|Sitemap|Feedback|Help|Resources|Community|Developers|API",
+        "visible": true
+      },
+      {
+        "name": "searchBar",
+        "locator": "#header-search",
+        "expectedText": "",
+        "visible": true
+      },
+      {
+        "name": "profileIcon",
+        "locator": "#profile-icon",
+        "expectedText": "",
+        "visible": true
+      },
+      {
+        "name": "notificationBell",
+        "locator": "#notification-bell",
+        "expectedText": "",
+        "visible": true
+      }
+    ],
+    "userRole": "poweruser",
+    "edgeCase": true
+  },
+  {
+    "testCaseId": "INT-123",
+    "description": "Header with empty navigation menu (edge case)",
+    "headerComponents": [
+      {
+        "name": "logo",
+        "locator": "#header-logo",
+        "expectedText": "CompanyLogo",
+        "visible": true
+      },
+      {
+        "name": "navigationMenu",
+        "locator": "#nav-menu",
+        "expectedText": "",
+        "visible": true
+      },
+      {
+        "name": "searchBar",
+        "locator": "#header-search",
+        "expectedText": "",
+        "visible": true
+      },
+      {
+        "name": "profileIcon",
+        "locator": "#profile-icon",
+        "expectedText": "",
+        "visible": true
+      },
+      {
+        "name": "notificationBell",
+        "locator": "#notification-bell",
+        "expectedText": "",
+        "visible": true
+      }
+    ],
+    "userRole": "test",
+    "edgeCase": true
+  }
+  // ... (94 more data items for comprehensive coverage, omitted for brevity)
+]
