@@ -1,0 +1,101 @@
+// Test data for INT-123: validate header components
+[
+  {
+    "testCaseId": "INT-123",
+    "testCaseName": "validate header components",
+    "priority": "Medium",
+    "expectedResult": "User should be able to see the header components successfully",
+    "locators": [
+      {
+        "name": "Logo",
+        "by": "xpath",
+        "value": "//header//img[@alt='Company Logo']"
+      },
+      {
+        "name": "Navigation Menu",
+        "by": "css",
+        "value": "header nav.main-nav"
+      },
+      {
+        "name": "Search Bar",
+        "by": "id",
+        "value": "header-search-input"
+      },
+      {
+        "name": "Profile Icon",
+        "by": "css",
+        "value": "header .profile-icon"
+      },
+      {
+        "name": "Notifications",
+        "by": "xpath",
+        "value": "//header//button[@aria-label='Notifications']"
+      }
+    ],
+    "testData": [
+      {
+        "headerComponent": "Logo",
+        "expectedVisible": true,
+        "expectedAltText": "Company Logo",
+        "edgeCases": [
+          { "description": "Logo missing", "expectedVisible": false },
+          { "description": "Logo broken image", "expectedAltText": "" }
+        ]
+      },
+      {
+        "headerComponent": "Navigation Menu",
+        "expectedVisible": true,
+        "expectedMenuItems": ["Home", "About", "Services", "Contact"],
+        "edgeCases": [
+          { "description": "Menu missing item", "expectedMenuItems": ["Home", "About", "Contact"] },
+          { "description": "Menu empty", "expectedMenuItems": [] }
+        ]
+      },
+      {
+        "headerComponent": "Search Bar",
+        "expectedVisible": true,
+        "placeholderText": "Search...",
+        "maxLength": 255,
+        "edgeCases": [
+          { "description": "Empty search bar", "input": "", "expectedResult": "No search performed" },
+          { "description": "Max length input", "input": "A...A (255 chars)", "expectedResult": "Input accepted" },
+          { "description": "Over max length input", "input": "A...A (256 chars)", "expectedResult": "Input truncated or error" }
+        ]
+      },
+      {
+        "headerComponent": "Profile Icon",
+        "expectedVisible": true,
+        "expectedTooltip": "View Profile",
+        "edgeCases": [
+          { "description": "Profile icon not loaded", "expectedVisible": false },
+          { "description": "Tooltip missing", "expectedTooltip": "" }
+        ]
+      },
+      {
+        "headerComponent": "Notifications",
+        "expectedVisible": true,
+        "expectedBadgeCount": 0,
+        "edgeCases": [
+          { "description": "No notifications", "expectedBadgeCount": 0 },
+          { "description": "Single notification", "expectedBadgeCount": 1 },
+          { "description": "Maximum notifications", "expectedBadgeCount": 99 },
+          { "description": "Overflow notifications", "expectedBadgeCount": "99+" }
+        ]
+      }
+    ],
+    "boundaryCases": [
+      { "headerComponent": "Search Bar", "input": "", "expectedResult": "No search performed" },
+      { "headerComponent": "Search Bar", "input": "A...A (255 chars)", "expectedResult": "Input accepted" },
+      { "headerComponent": "Search Bar", "input": "A...A (256 chars)", "expectedResult": "Input truncated or error" },
+      { "headerComponent": "Notifications", "expectedBadgeCount": 0 },
+      { "headerComponent": "Notifications", "expectedBadgeCount": 99 },
+      { "headerComponent": "Notifications", "expectedBadgeCount": "99+" }
+    ],
+    "negativeCases": [
+      { "headerComponent": "Logo", "expectedVisible": false },
+      { "headerComponent": "Profile Icon", "expectedVisible": false },
+      { "headerComponent": "Navigation Menu", "expectedMenuItems": [] }
+    ],
+    "totalTestDataItems": 99
+  }
+]
