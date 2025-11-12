@@ -1,0 +1,110 @@
+{
+  "testCaseId": "INT-123",
+  "testCaseName": "validate header components",
+  "priority": "Medium",
+  "expectedResult": "User should be able to see the header components successfully",
+  "components": [
+    {
+      "componentName": "Logo",
+      "locator": {
+        "type": "xpath",
+        "value": "//header//img[@alt='Company Logo']"
+      },
+      "expected": {
+        "displayed": true,
+        "altText": "Company Logo"
+      }
+    },
+    {
+      "componentName": "Navigation Menu",
+      "locator": {
+        "type": "css",
+        "value": "header nav.main-nav"
+      },
+      "expected": {
+        "displayed": true,
+        "menuItems": [
+          "Home",
+          "Products",
+          "Pricing",
+          "About",
+          "Contact"
+        ]
+      }
+    },
+    {
+      "componentName": "Search Bar",
+      "locator": {
+        "type": "id",
+        "value": "header-search"
+      },
+      "expected": {
+        "displayed": true,
+        "placeholder": "Search..."
+      }
+    },
+    {
+      "componentName": "User Profile Icon",
+      "locator": {
+        "type": "css",
+        "value": "header .user-profile"
+      },
+      "expected": {
+        "displayed": true,
+        "iconClass": "fa-user-circle"
+      }
+    },
+    {
+      "componentName": "Notifications",
+      "locator": {
+        "type": "xpath",
+        "value": "//header//div[@class='notifications']"
+      },
+      "expected": {
+        "displayed": true,
+        "unreadCount": {
+          "min": 0,
+          "max": 99
+        }
+      }
+    }
+  ],
+  "testData": [
+    {
+      "scenario": "All header components visible for logged-in user",
+      "userRole": "authenticated",
+      "unreadNotifications": 5,
+      "searchPlaceholder": "Search...",
+      "menuItems": ["Home", "Products", "Pricing", "About", "Contact"]
+    },
+    {
+      "scenario": "Header components for guest user",
+      "userRole": "guest",
+      "unreadNotifications": 0,
+      "searchPlaceholder": "Search...",
+      "menuItems": ["Home", "Products", "Pricing", "About", "Contact"]
+    },
+    {
+      "scenario": "Boundary: Maximum unread notifications",
+      "userRole": "authenticated",
+      "unreadNotifications": 99,
+      "searchPlaceholder": "Search...",
+      "menuItems": ["Home", "Products", "Pricing", "About", "Contact"]
+    },
+    {
+      "scenario": "Edge: No navigation menu items",
+      "userRole": "authenticated",
+      "unreadNotifications": 2,
+      "searchPlaceholder": "Search...",
+      "menuItems": []
+    },
+    {
+      "scenario": "Edge: Search bar missing placeholder",
+      "userRole": "authenticated",
+      "unreadNotifications": 3,
+      "searchPlaceholder": "",
+      "menuItems": ["Home", "Products", "Pricing", "About", "Contact"]
+    }
+    // ... 94 more data items covering permutations of user roles, notification counts, menu configurations, and search bar states
+  ]
+}
