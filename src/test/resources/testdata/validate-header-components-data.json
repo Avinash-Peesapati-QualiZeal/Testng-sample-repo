@@ -1,0 +1,151 @@
+{
+  "testCaseId": "INT-123",
+  "testCaseName": "validate header components",
+  "priority": "Medium",
+  "expectedResult": "User should be able to see the header components successfully",
+  "headerComponents": [
+    {
+      "componentName": "Logo",
+      "locator": {
+        "type": "xpath",
+        "value": "//header//img[@alt='Company Logo']"
+      },
+      "expectedVisible": true,
+      "edgeCases": [
+        {
+          "description": "Logo missing",
+          "expectedVisible": false
+        }
+      ]
+    },
+    {
+      "componentName": "Navigation Menu",
+      "locator": {
+        "type": "css",
+        "value": "header nav.main-nav"
+      },
+      "expectedVisible": true,
+      "edgeCases": [
+        {
+          "description": "Navigation menu collapsed",
+          "expectedVisible": false
+        }
+      ]
+    },
+    {
+      "componentName": "Search Bar",
+      "locator": {
+        "type": "id",
+        "value": "header-search"
+      },
+      "expectedVisible": true,
+      "testData": [
+        "",
+        "test",
+        "a",
+        "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz",
+        "!@#$%^&*()_+"
+      ],
+      "edgeCases": [
+        {
+          "description": "Empty search input",
+          "input": "",
+          "expectedResult": "No search performed"
+        },
+        {
+          "description": "Max character limit",
+          "input": "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz",
+          "expectedResult": "Input accepted up to max length"
+        },
+        {
+          "description": "Special characters",
+          "input": "!@#$%^&*()_+",
+          "expectedResult": "Input accepted"
+        }
+      ]
+    },
+    {
+      "componentName": "User Profile Icon",
+      "locator": {
+        "type": "css",
+        "value": "header .user-profile"
+      },
+      "expectedVisible": true,
+      "edgeCases": [
+        {
+          "description": "User not logged in",
+          "expectedVisible": false
+        }
+      ]
+    },
+    {
+      "componentName": "Notifications",
+      "locator": {
+        "type": "xpath",
+        "value": "//header//div[@class='notifications']"
+      },
+      "expectedVisible": true,
+      "testData": [
+        {
+          "notificationCount": 0,
+          "expectedBadgeVisible": false
+        },
+        {
+          "notificationCount": 1,
+          "expectedBadgeVisible": true
+        },
+        {
+          "notificationCount": 99,
+          "expectedBadgeVisible": true
+        },
+        {
+          "notificationCount": 100,
+          "expectedBadgeVisible": true
+        }
+      ],
+      "edgeCases": [
+        {
+          "description": "No notifications",
+          "notificationCount": 0,
+          "expectedBadgeVisible": false
+        },
+        {
+          "description": "Maximum notifications",
+          "notificationCount": 99,
+          "expectedBadgeVisible": true
+        },
+        {
+          "description": "Overflow notifications",
+          "notificationCount": 100,
+          "expectedBadgeVisible": true
+        }
+      ]
+    }
+  ],
+  "dataSets": [
+    {
+      "id": 1,
+      "userType": "LoggedIn",
+      "expectedHeaderComponents": ["Logo", "Navigation Menu", "Search Bar", "User Profile Icon", "Notifications"]
+    },
+    {
+      "id": 2,
+      "userType": "Guest",
+      "expectedHeaderComponents": ["Logo", "Navigation Menu", "Search Bar"]
+    }
+  ],
+  "boundaryValues": {
+    "searchBarMaxLength": 100,
+    "notificationMaxCount": 99
+  },
+  "negativeScenarios": [
+    {
+      "description": "Header does not load",
+      "expectedResult": "Header components not visible"
+    },
+    {
+      "description": "User not logged in",
+      "expectedResult": "User Profile Icon not visible"
+    }
+  ]
+}
