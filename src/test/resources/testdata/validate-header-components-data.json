@@ -1,0 +1,455 @@
+{
+  "testCaseId": "INT-123",
+  "testCaseName": "validate header components",
+  "priority": "Medium",
+  "expectedResult": "User should be able to see the header components successfully",
+  "locators": [
+    {
+      "name": "logo",
+      "type": "css",
+      "value": "header .site-logo"
+    },
+    {
+      "name": "navigationMenu",
+      "type": "css",
+      "value": "header nav.main-nav"
+    },
+    {
+      "name": "searchBar",
+      "type": "css",
+      "value": "header input[type='search']"
+    },
+    {
+      "name": "profileIcon",
+      "type": "css",
+      "value": "header .profile-icon"
+    },
+    {
+      "name": "cartIcon",
+      "type": "css",
+      "value": "header .cart-icon"
+    }
+  ],
+  "testData": [
+    {
+      "headerTitle": "Home",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Products",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "About Us",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Contact",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Login",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Logout",
+      "expectedVisible": false
+    },
+    {
+      "headerTitle": "Cart",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Profile",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Search",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Offers",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Support",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Settings",
+      "expectedVisible": false
+    },
+    {
+      "headerTitle": "Admin",
+      "expectedVisible": false
+    },
+    {
+      "headerTitle": "Help",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "FAQ",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Feedback",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Terms",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Privacy",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Sitemap",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "LanguageSelector",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Notifications",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "UserDropdown",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "MobileMenu",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "DesktopMenu",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "DarkModeToggle",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "LightModeToggle",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "PromoBanner",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "BetaBadge",
+      "expectedVisible": false
+    },
+    {
+      "headerTitle": "NewFeature",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "OldFeature",
+      "expectedVisible": false
+    },
+    {
+      "headerTitle": "UserAvatar",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "SignUp",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "SignIn",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "LogoutButton",
+      "expectedVisible": false
+    },
+    {
+      "headerTitle": "OrderHistory",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Wishlist",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Compare",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "DownloadApp",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "GiftCards",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "ReferFriend",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Blog",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Community",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Events",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Careers",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "InvestorRelations",
+      "expectedVisible": false
+    },
+    {
+      "headerTitle": "Press",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Partners",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Developers",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "APIDocs",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Accessibility",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "CookiePolicy",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Legal",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "CustomerStories",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "CaseStudies",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Whitepapers",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Ebooks",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Podcasts",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Webinars",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Tutorials",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Documentation",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Forum",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Marketplace",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Integrations",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "APIStatus",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "SystemStatus",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "ReleaseNotes",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Changelog",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "BetaFeatures",
+      "expectedVisible": false
+    },
+    {
+      "headerTitle": "EarlyAccess",
+      "expectedVisible": false
+    },
+    {
+      "headerTitle": "Labs",
+      "expectedVisible": false
+    },
+    {
+      "headerTitle": "TestComponent1",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "TestComponent2",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "TestComponent3",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "TestComponent4",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "TestComponent5",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "TestComponent6",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "TestComponent7",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "TestComponent8",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "TestComponent9",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "TestComponent10",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "EdgeCaseEmptyTitle",
+      "expectedVisible": false
+    },
+    {
+      "headerTitle": "EdgeCaseSpecialChars!@#",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "EdgeCaseLongTitle_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "EdgeCaseNull",
+      "expectedVisible": false
+    },
+    {
+      "headerTitle": "EdgeCaseWhitespace",
+      "expectedVisible": false
+    },
+    {
+      "headerTitle": "Header1",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header2",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header3",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header4",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header5",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header6",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header7",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header8",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header9",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header10",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header11",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header12",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header13",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header14",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header15",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header16",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header17",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header18",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header19",
+      "expectedVisible": true
+    },
+    {
+      "headerTitle": "Header20",
+      "expectedVisible": true
+    }
+  ]
+}
