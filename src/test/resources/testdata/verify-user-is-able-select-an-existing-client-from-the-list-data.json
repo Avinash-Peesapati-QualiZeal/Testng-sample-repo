@@ -1,0 +1,37 @@
+// Test Data for TC_002: Verify User is able select an existing client from the list
+[
+  {
+    "testCaseId": "TC_002",
+    "description": "Valid login and select existing client from Salesforce account list.",
+    "preconditions": {
+      "url": "https://lockton1--cbqa.sandbox.my.salesforce.com/",
+      "username": "harika.pendam@us.lockton.com.cbqa",
+      "password": "Lockton@123"
+    },
+    "clientSelection": {
+      "searchClientName": "Acme Corporation",
+      "clientId": "0015g00000N7zQBAAZ",
+      "clientType": "Standard",
+      "clientStatus": "Active",
+      "industry": "Insurance",
+      "accountOwner": "John Doe",
+      "accountPhone": "+1-555-123-4567",
+      "accountEmail": "acme-contact@acme.com",
+      "accountRegion": "Midwest",
+      "accountTier": "Gold",
+      "lastModified": "2024-06-10T14:30:00Z",
+      "edgeCaseClientName": "A", // Boundary: Single character
+      "maxLengthClientName": "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMN", // 99 chars
+      "specialCharClientName": "Acme@#%&*Corp!",
+      "nonExistentClientName": "NonExistentClientXYZ"
+    },
+    "locators": {
+      "usernameInput": "#username",
+      "passwordInput": "#password",
+      "loginButton": "#Login",
+      "searchBox": "input[title='Search...']",
+      "clientListItem": "//a[contains(@title, '${searchClientName}')]"
+    },
+    "expectedResult": "User logs in and navigates to the selected client's account page without errors."
+  }
+]
