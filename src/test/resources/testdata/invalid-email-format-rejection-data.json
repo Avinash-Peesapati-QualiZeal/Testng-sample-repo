@@ -1,0 +1,171 @@
+// Test data for TC-N002: Invalid Email Format Rejection
+[
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email missing '@' symbol",
+    "input": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "johndoe.example.com",
+      "phone": "1234567890",
+      "company": "ExampleCorp"
+    },
+    "expectedError": "Invalid email format."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email missing domain",
+    "input": {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane@",
+      "phone": "9876543210",
+      "company": "TestInc"
+    },
+    "expectedError": "Invalid email format."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email missing username",
+    "input": {
+      "firstName": "Alice",
+      "lastName": "Brown",
+      "email": "@example.com",
+      "phone": "5551234567",
+      "company": "AlphaBeta"
+    },
+    "expectedError": "Invalid email format."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email with spaces",
+    "input": {
+      "firstName": "Bob",
+      "lastName": "Green",
+      "email": "bob green@example.com",
+      "phone": "4445556666",
+      "company": "GreenTech"
+    },
+    "expectedError": "Invalid email format."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email with multiple '@' symbols",
+    "input": {
+      "firstName": "Charlie",
+      "lastName": "White",
+      "email": "charlie@@example.com",
+      "phone": "3332221111",
+      "company": "WhiteStone"
+    },
+    "expectedError": "Invalid email format."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email with invalid characters",
+    "input": {
+      "firstName": "Diana",
+      "lastName": "King",
+      "email": "diana!king@example.com",
+      "phone": "2223334444",
+      "company": "Kingdom"
+    },
+    "expectedError": "Invalid email format."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email with consecutive dots",
+    "input": {
+      "firstName": "Eve",
+      "lastName": "Black",
+      "email": "eve..black@example.com",
+      "phone": "1112223333",
+      "company": "BlackBox"
+    },
+    "expectedError": "Invalid email format."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email with trailing dot in domain",
+    "input": {
+      "firstName": "Frank",
+      "lastName": "Moore",
+      "email": "frank.moore@example.com.",
+      "phone": "1231231234",
+      "company": "MooreTech"
+    },
+    "expectedError": "Invalid email format."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email with no TLD",
+    "input": {
+      "firstName": "Grace",
+      "lastName": "Hill",
+      "email": "grace.hill@example",
+      "phone": "3213214321",
+      "company": "HillCorp"
+    },
+    "expectedError": "Invalid email format."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email with numeric TLD",
+    "input": {
+      "firstName": "Henry",
+      "lastName": "Lee",
+      "email": "henry.lee@example.123",
+      "phone": "6546547654",
+      "company": "LeeEnterprises"
+    },
+    "expectedError": "Invalid email format."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email with special character in domain",
+    "input": {
+      "firstName": "Ivy",
+      "lastName": "Young",
+      "email": "ivy.young@exam!ple.com",
+      "phone": "7897890987",
+      "company": "YoungSolutions"
+    },
+    "expectedError": "Invalid email format."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email with double dot in domain",
+    "input": {
+      "firstName": "Jack",
+      "lastName": "Scott",
+      "email": "jack.scott@example..com",
+      "phone": "8889990001",
+      "company": "ScottTech"
+    },
+    "expectedError": "Invalid email format."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email with dash at start of domain",
+    "input": {
+      "firstName": "Kate",
+      "lastName": "Wright",
+      "email": "kate.wright@-example.com",
+      "phone": "7778889990",
+      "company": "WrightWorks"
+    },
+    "expectedError": "Invalid email format."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Blank email field",
+    "input": {
+      "firstName": "Leo",
+      "lastName": "Turner",
+      "email": "",
+      "phone": "6665554443",
+      "company": "TurnerGroup"
+    },
+    "expectedError": "Email is required."
+  }
+]

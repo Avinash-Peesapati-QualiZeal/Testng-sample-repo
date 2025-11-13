@@ -1,0 +1,101 @@
+// playwright/test-data/contact-creation-invalid-email-data.json
+[
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "invalidEmail": "john.doe@",
+    "phoneNumber": "1234567890",
+    "company": "Acme Inc"
+  },
+  {
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "invalidEmail": "jane.smith.com",
+    "phoneNumber": "9876543210",
+    "company": "Beta LLC"
+  },
+  {
+    "firstName": "Bob",
+    "lastName": "Brown",
+    "invalidEmail": "bob@@domain.com",
+    "phoneNumber": "5555555555",
+    "company": "Gamma Corp"
+  },
+  {
+    "firstName": "Alice",
+    "lastName": "White",
+    "invalidEmail": "alice@.com",
+    "phoneNumber": "4444444444",
+    "company": "Delta Ltd"
+  },
+  {
+    "firstName": "Eve",
+    "lastName": "Black",
+    "invalidEmail": "eve@domain",
+    "phoneNumber": "3333333333",
+    "company": "Epsilon GmbH"
+  },
+  {
+    "firstName": "Charlie",
+    "lastName": "Green",
+    "invalidEmail": "charlie@domain..com",
+    "phoneNumber": "2222222222",
+    "company": "Zeta AG"
+  },
+  {
+    "firstName": "Mallory",
+    "lastName": "Blue",
+    "invalidEmail": "mallory@domain,com",
+    "phoneNumber": "1111111111",
+    "company": "Eta Oy"
+  },
+  {
+    "firstName": "Oscar",
+    "lastName": "Red",
+    "invalidEmail": "oscar@domain@domain.com",
+    "phoneNumber": "6666666666",
+    "company": "Theta AB"
+  },
+  {
+    "firstName": "Peggy",
+    "lastName": "Yellow",
+    "invalidEmail": "@domain.com",
+    "phoneNumber": "7777777777",
+    "company": "Iota Ltd"
+  },
+  {
+    "firstName": "Victor",
+    "lastName": "Orange",
+    "invalidEmail": "victor@.domain.com",
+    "phoneNumber": "8888888888",
+    "company": "Kappa PLC"
+  },
+  {
+    "firstName": "Sybil",
+    "lastName": "Purple",
+    "invalidEmail": "sybil@domain..co.uk",
+    "phoneNumber": "9999999999",
+    "company": "Lambda Inc"
+  },
+  {
+    "firstName": "Trudy",
+    "lastName": "Pink",
+    "invalidEmail": "trudy@domain#com",
+    "phoneNumber": "1010101010",
+    "company": "Mu LLC"
+  },
+  {
+    "firstName": "Walter",
+    "lastName": "Grey",
+    "invalidEmail": "walter@domain.c",
+    "phoneNumber": "2020202020",
+    "company": "Nu GmbH"
+  },
+  {
+    "firstName": "Yvonne",
+    "lastName": "Silver",
+    "invalidEmail": "yvonne@domain..",
+    "phoneNumber": "3030303030",
+    "company": "Xi AG"
+  }
+]
