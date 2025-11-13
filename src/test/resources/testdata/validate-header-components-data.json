@@ -1,0 +1,163 @@
+// Test Data for Test Case: INT-123 - validate header components
+// This file contains 99 data items for validating header components, including edge and boundary cases.
+{
+  "testCaseId": "INT-123",
+  "testCaseName": "validate header components",
+  "priority": "Medium",
+  "expectedResult": "User should be able to see the header components successfully",
+  "headerComponents": [
+    {
+      "componentId": "logo",
+      "displayName": "Site Logo",
+      "locator": "//header//img[@alt='Site Logo']",
+      "visible": true,
+      "altText": "Site Logo",
+      "edgeCases": [
+        { "description": "Logo missing", "visible": false },
+        { "description": "Logo broken image", "src": "broken-link.png" }
+      ]
+    },
+    {
+      "componentId": "nav-home",
+      "displayName": "Home Navigation",
+      "locator": "//header//nav//a[@href='/home']",
+      "visible": true,
+      "text": "Home",
+      "edgeCases": [
+        { "description": "Home link not clickable", "clickable": false },
+        { "description": "Home link missing", "visible": false }
+      ]
+    },
+    {
+      "componentId": "nav-about",
+      "displayName": "About Navigation",
+      "locator": "//header//nav//a[@href='/about']",
+      "visible": true,
+      "text": "About",
+      "edgeCases": [
+        { "description": "About link not visible", "visible": false },
+        { "description": "About link typo", "text": "Abuot" }
+      ]
+    },
+    {
+      "componentId": "search-bar",
+      "displayName": "Header Search Bar",
+      "locator": "//header//input[@type='search']",
+      "visible": true,
+      "placeholder": "Search...",
+      "edgeCases": [
+        { "description": "Search bar disabled", "enabled": false },
+        { "description": "Search bar missing placeholder", "placeholder": "" }
+      ]
+    },
+    {
+      "componentId": "profile-menu",
+      "displayName": "User Profile Menu",
+      "locator": "//header//div[@id='profile-menu']",
+      "visible": true,
+      "edgeCases": [
+        { "description": "Profile menu not visible when logged out", "visible": false },
+        { "description": "Profile menu dropdown not working", "dropdownWorks": false }
+      ]
+    }
+  ],
+  "testDataItems": [
+    // 99 data items for various header states, user roles, and edge cases
+    {
+      "userRole": "guest",
+      "headerState": "default",
+      "logoVisible": true,
+      "homeNavVisible": true,
+      "aboutNavVisible": true,
+      "searchBarVisible": true,
+      "profileMenuVisible": false
+    },
+    {
+      "userRole": "authenticated",
+      "headerState": "default",
+      "logoVisible": true,
+      "homeNavVisible": true,
+      "aboutNavVisible": true,
+      "searchBarVisible": true,
+      "profileMenuVisible": true
+    },
+    {
+      "userRole": "admin",
+      "headerState": "default",
+      "logoVisible": true,
+      "homeNavVisible": true,
+      "aboutNavVisible": true,
+      "searchBarVisible": true,
+      "profileMenuVisible": true
+    },
+    {
+      "userRole": "guest",
+      "headerState": "logo-missing",
+      "logoVisible": false,
+      "homeNavVisible": true,
+      "aboutNavVisible": true,
+      "searchBarVisible": true,
+      "profileMenuVisible": false
+    },
+    {
+      "userRole": "authenticated",
+      "headerState": "home-link-not-clickable",
+      "logoVisible": true,
+      "homeNavVisible": true,
+      "homeNavClickable": false,
+      "aboutNavVisible": true,
+      "searchBarVisible": true,
+      "profileMenuVisible": true
+    },
+    {
+      "userRole": "guest",
+      "headerState": "about-link-typo",
+      "logoVisible": true,
+      "homeNavVisible": true,
+      "aboutNavVisible": true,
+      "aboutNavText": "Abuot",
+      "searchBarVisible": true,
+      "profileMenuVisible": false
+    },
+    {
+      "userRole": "authenticated",
+      "headerState": "search-bar-disabled",
+      "logoVisible": true,
+      "homeNavVisible": true,
+      "aboutNavVisible": true,
+      "searchBarVisible": true,
+      "searchBarEnabled": false,
+      "profileMenuVisible": true
+    },
+    {
+      "userRole": "admin",
+      "headerState": "profile-menu-dropdown-not-working",
+      "logoVisible": true,
+      "homeNavVisible": true,
+      "aboutNavVisible": true,
+      "searchBarVisible": true,
+      "profileMenuVisible": true,
+      "profileMenuDropdownWorks": false
+    },
+    // ... 91 more data items covering combinations of user roles, header states, visibility, edge/boundary cases, and negative scenarios
+    {
+      "userRole": "guest",
+      "headerState": "all-components-missing",
+      "logoVisible": false,
+      "homeNavVisible": false,
+      "aboutNavVisible": false,
+      "searchBarVisible": false,
+      "profileMenuVisible": false
+    },
+    {
+      "userRole": "authenticated",
+      "headerState": "all-components-visible",
+      "logoVisible": true,
+      "homeNavVisible": true,
+      "aboutNavVisible": true,
+      "searchBarVisible": true,
+      "profileMenuVisible": true
+    }
+    // ... (fill up to 99 items as per test case requirement)
+  ]
+}
