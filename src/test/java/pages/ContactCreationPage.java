@@ -73,4 +73,49 @@ public class ContactCreationPage {
             return false;
         }
     }
+
+    /**
+     * Enter an invalid email address in the email field.
+     * @param invalidEmail The invalid email address to input
+     */
+    public void enterInvalidEmailAddress(String invalidEmail) {
+        driver.findElement(emailAddressInput).clear();
+        driver.findElement(emailAddressInput).sendKeys(invalidEmail);
+    }
+
+    /**
+     * Clicks the Add Email button after entering the email address.
+     */
+    public void clickAddEmailButton() {
+        driver.findElement(addEmailButton).click();
+    }
+
+    /**
+     * Clicks the Save button to attempt saving the contact.
+     */
+    public void clickSaveButton() {
+        driver.findElement(saveButton).click();
+    }
+
+    /**
+     * Checks if the invalid email format error message is displayed.
+     * @return true if error message is displayed, false otherwise
+     */
+    public boolean isInvalidEmailFormatErrorDisplayed() {
+        try {
+            // TODO: Replace with actual locator for invalid email format error message
+            By invalidEmailError = By.xpath("//div[contains(@class,'error') and contains(text(),'invalid email')]");
+            return driver.findElement(invalidEmailError).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * Checks if the contact was NOT saved (i.e., confirmation message is not displayed).
+     * @return true if confirmation message is NOT displayed, false otherwise
+     */
+    public boolean isContactNotSaved() {
+        return !isConfirmationMessageDisplayed();
+    }
 }
