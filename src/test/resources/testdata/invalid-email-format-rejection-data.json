@@ -1,0 +1,162 @@
+{
+  "testCaseId": "TC-N002",
+  "testCaseName": "Invalid Email Format Rejection",
+  "module": null,
+  "submodule": null,
+  "objective": "Verify system rejects invalid email formats and displays appropriate error message.",
+  "preconditions": [
+    "User is logged into the CRM system.",
+    "User navigates to the contact creation screen."
+  ],
+  "priority": "Medium",
+  "expectedResult": "System displays an error message indicating the email format is invalid.",
+  "postConditions": [
+    "No contact is saved in the CRM system."
+  ],
+  "locators": [
+    {
+      "field": "emailInput",
+      "description": "Email address input field",
+      "locatorType": "id",
+      "locatorValue": "contact-email"
+    },
+    {
+      "field": "saveButton",
+      "description": "Save/Create Contact button",
+      "locatorType": "id",
+      "locatorValue": "save-contact"
+    },
+    {
+      "field": "errorMessage",
+      "description": "Email format error message",
+      "locatorType": "css",
+      "locatorValue": ".email-error-msg"
+    },
+    {
+      "field": "nameInput",
+      "description": "Contact name input field",
+      "locatorType": "id",
+      "locatorValue": "contact-name"
+    },
+    {
+      "field": "phoneInput",
+      "description": "Contact phone input field",
+      "locatorType": "id",
+      "locatorValue": "contact-phone"
+    }
+  ],
+  "testData": [
+    {
+      "testDataId": "TD-01",
+      "description": "Email missing '@' symbol",
+      "name": "John Doe",
+      "email": "johndoe.example.com",
+      "phone": "1234567890",
+      "expectedError": "Please enter a valid email address."
+    },
+    {
+      "testDataId": "TD-02",
+      "description": "Email missing domain",
+      "name": "Jane Smith",
+      "email": "jane@",
+      "phone": "9876543210",
+      "expectedError": "Please enter a valid email address."
+    },
+    {
+      "testDataId": "TD-03",
+      "description": "Email with double dots",
+      "name": "Alice Brown",
+      "email": "alice..brown@example.com",
+      "phone": "5551234567",
+      "expectedError": "Please enter a valid email address."
+    },
+    {
+      "testDataId": "TD-04",
+      "description": "Email starting with dot",
+      "name": "Bob Green",
+      "email": ".bob@example.com",
+      "phone": "5559876543",
+      "expectedError": "Please enter a valid email address."
+    },
+    {
+      "testDataId": "TD-05",
+      "description": "Email ending with dot",
+      "name": "Carol White",
+      "email": "carol.@example.com",
+      "phone": "5551112222",
+      "expectedError": "Please enter a valid email address."
+    },
+    {
+      "testDataId": "TD-06",
+      "description": "Email with invalid characters",
+      "name": "David Black",
+      "email": "david!black@example.com",
+      "phone": "5553334444",
+      "expectedError": "Please enter a valid email address."
+    },
+    {
+      "testDataId": "TD-07",
+      "description": "Email with no username",
+      "name": "Eve Blue",
+      "email": "@example.com",
+      "phone": "5556667777",
+      "expectedError": "Please enter a valid email address."
+    },
+    {
+      "testDataId": "TD-08",
+      "description": "Email with no domain",
+      "name": "Frank Red",
+      "email": "frank@.com",
+      "phone": "5558889999",
+      "expectedError": "Please enter a valid email address."
+    },
+    {
+      "testDataId": "TD-09",
+      "description": "Email with space",
+      "name": "Grace Yellow",
+      "email": "grace yellow@example.com",
+      "phone": "5550001111",
+      "expectedError": "Please enter a valid email address."
+    },
+    {
+      "testDataId": "TD-10",
+      "description": "Email with special character in domain",
+      "name": "Henry Violet",
+      "email": "henry@exa!mple.com",
+      "phone": "5552223333",
+      "expectedError": "Please enter a valid email address."
+    },
+    {
+      "testDataId": "TD-11",
+      "description": "Email with missing TLD",
+      "name": "Ivy Indigo",
+      "email": "ivy@example",
+      "phone": "5554445555",
+      "expectedError": "Please enter a valid email address."
+    },
+    {
+      "testDataId": "TD-12",
+      "description": "Email with numeric TLD",
+      "name": "Jack Orange",
+      "email": "jack@domain.123",
+      "phone": "5556667778",
+      "expectedError": "Please enter a valid email address."
+    },
+    {
+      "testDataId": "TD-13",
+      "description": "Email with consecutive @ symbols",
+      "name": "Kathy Pink",
+      "email": "kathy@@example.com",
+      "phone": "5559990000",
+      "expectedError": "Please enter a valid email address."
+    },
+    {
+      "testDataId": "TD-14",
+      "description": "Email with unicode characters",
+      "name": "Leo Cyan",
+      "email": "leoç@example.com",
+      "phone": "5551231234",
+      "expectedError": "Please enter a valid email address."
+    }
+  ]
+}
