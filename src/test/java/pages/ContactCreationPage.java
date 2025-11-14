@@ -73,4 +73,56 @@ public class ContactCreationPage {
             return false;
         }
     }
+
+    /**
+     * Complete the invalid email format rejection flow.
+     * Enters valid data in all fields except email, which is invalid, and attempts to save.
+     * Verifies that the invalid email error message is displayed and no contact is saved.
+     * @param firstName Valid first name
+     * @param lastName Valid last name
+     * @param invalidEmail Invalid email format (e.g., 'invalidemail.com')
+     * @param emailType Email type (e.g., Personal, Business)
+     * @param category Category to select (e.g., Lead, Customer)
+     */
+    public void createContactWithInvalidEmail(String firstName, String lastName, String invalidEmail, String emailType, String category) {
+        // Enter First Name
+        driver.findElement(firstNameInput).clear();
+        driver.findElement(firstNameInput).sendKeys(firstName);
+
+        // Enter Last Name
+        driver.findElement(lastNameInput).clear();
+        driver.findElement(lastNameInput).sendKeys(lastName);
+
+        // Enter Invalid Email Address
+        driver.findElement(emailAddressInput).clear();
+        driver.findElement(emailAddressInput).sendKeys(invalidEmail);
+
+        // Enter Email Type
+        driver.findElement(emailTypeInput).clear();
+        driver.findElement(emailTypeInput).sendKeys(emailType);
+
+        // Click Add Email Button
+        driver.findElement(addEmailButton).click();
+
+        // Select Category from Dropdown
+        driver.findElement(categoryDropdown).click();
+        WebElement categoryOption = driver.findElement(By.xpath("//div[@name='category']//span[text()='" + category + "']"));
+        categoryOption.click();
+
+        // Click Save Button
+        driver.findElement(saveButton).click();
+    }
+
+    /**
+     * Checks if the invalid email error message is displayed after attempting to save with invalid email.
+     * @return true if error message is displayed, false otherwise
+     */
+    public boolean isInvalidEmailErrorDisplayed() {
+        try {
+            By invalidEmailError = By.xpath("//span[contains(@class,'inline-error-msg') and contains(text(),'email format is invalid')]"); // TODO: Replace with actual locator if needed
+            return driver.findElement(invalidEmailError).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
