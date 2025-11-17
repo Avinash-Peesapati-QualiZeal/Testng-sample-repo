@@ -1,0 +1,120 @@
+// Test data for TC-N004: Maximum Character Limit for Name Field
+{
+  "testCaseId": "TC-N004",
+  "testCaseName": "Maximum Character Limit for Name Field",
+  "objective": "Check system behavior when the Name field is filled to its maximum allowed character limit.",
+  "priority": "Medium",
+  "preconditions": [
+    "User is logged into the CRM system.",
+    "User navigates to the contact creation screen."
+  ],
+  "postConditions": [
+    "Contact is saved in the CRM system with the specified details."
+  ],
+  "expectedResult": "System accepts the input and displays a confirmation message.",
+  "fields": {
+    "name": {
+      "description": "Contact Name field",
+      "maxLength": 255,
+      "testValues": [
+        {
+          "label": "Max Length (255 chars)",
+          "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "expected": "Accepted"
+        },
+        {
+          "label": "Above Max Length (256 chars)",
+          "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "expected": "Rejected or trimmed"
+        },
+        {
+          "label": "Empty String",
+          "value": "",
+          "expected": "Rejected"
+        },
+        {
+          "label": "Special Characters",
+          "value": "John@#&$%*()!",
+          "expected": "Accepted or Rejected based on system rules"
+        },
+        {
+          "label": "Alphanumeric",
+          "value": "John123Doe456",
+          "expected": "Accepted"
+        },
+        {
+          "label": "Whitespace Only",
+          "value": "     ",
+          "expected": "Rejected"
+        },
+        {
+          "label": "Single Character",
+          "value": "J",
+          "expected": "Accepted"
+        },
+        {
+          "label": "Unicode Characters",
+          "value": "张伟",
+          "expected": "Accepted"
+        },
+        {
+          "label": "Name with Hyphen",
+          "value": "Anne-Marie",
+          "expected": "Accepted"
+        },
+        {
+          "label": "Name with Apostrophe",
+          "value": "O'Connor",
+          "expected": "Accepted"
+        },
+        {
+          "label": "Name with Leading/Trailing Spaces",
+          "value": "  John Doe  ",
+          "expected": "Trimmed and Accepted"
+        },
+        {
+          "label": "Mixed Case",
+          "value": "jOhN dOe",
+          "expected": "Accepted"
+        },
+        {
+          "label": "Name with Numbers Only",
+          "value": "123456",
+          "expected": "Rejected"
+        },
+        {
+          "label": "Name with Newline",
+          "value": "John\nDoe",
+          "expected": "Rejected or trimmed"
+        }
+      ]
+    }
+  },
+  "locators": [
+    {
+      "field": "nameInput",
+      "type": "id",
+      "value": "contact_name"
+    },
+    {
+      "field": "saveButton",
+      "type": "id",
+      "value": "save_contact"
+    },
+    {
+      "field": "confirmationMessage",
+      "type": "css",
+      "value": ".alert-success"
+    },
+    {
+      "field": "errorMessage",
+      "type": "css",
+      "value": ".alert-danger"
+    },
+    {
+      "field": "contactListTable",
+      "type": "id",
+      "value": "contact_list"
+    }
+  ]
+}

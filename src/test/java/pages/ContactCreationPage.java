@@ -73,4 +73,65 @@ public class ContactCreationPage {
             return false;
         }
     }
+
+    /**
+     * Fills the contact creation form with maximum allowed characters in the Name field and saves the contact.
+     * This method is specifically for test case TC-N004: Maximum Character Limit for Name Field.
+     *
+     * @param maxFirstName String with maximum allowed characters for First Name
+     * @param lastName Valid last name
+     * @param email Valid email address
+     * @param company Company name
+     * @param position Position or job title
+     */
+    public void createContactWithMaxNameField(String maxFirstName, String lastName, String email, String company, String position) {
+        // Enter First Name (max chars)
+        driver.findElement(firstNameInput).clear();
+        driver.findElement(firstNameInput).sendKeys(maxFirstName);
+
+        // Enter Last Name
+        driver.findElement(lastNameInput).clear();
+        driver.findElement(lastNameInput).sendKeys(lastName);
+
+        // Enter Email Address
+        driver.findElement(emailAddressInput).clear();
+        driver.findElement(emailAddressInput).sendKeys(email);
+
+        // Enter Company
+        By companyDropdown = By.cssSelector("div[role='combobox']");
+        driver.findElement(companyDropdown).click();
+        // Enter company name in dropdown search input
+        By companySearchInput = By.cssSelector("div[role='combobox'] input.search");
+        driver.findElement(companySearchInput).sendKeys(company);
+        // Select the company from the dropdown (assumes exact match)
+        By companyOption = By.xpath("//div[@role='combobox']//span[text()='" + company + "']");
+        if (driver.findElements(companyOption).size() > 0) {
+            driver.findElement(companyOption).click();
+        }
+
+        // Enter Position (assuming a placeholder locator as it's not defined)
+        By positionInput = By.xpath("<PLACEHOLDER_Position_Input>"); // TODO: Replace with actual locator
+        if (driver.findElements(positionInput).size() > 0) {
+            driver.findElement(positionInput).clear();
+            driver.findElement(positionInput).sendKeys(position);
+        }
+
+        // Click Save Button
+        By saveButton = By.xpath("//button[contains(@class, 'linkedin button') and contains(text(), 'Save')]");
+        driver.findElement(saveButton).click();
+    }
+
+    /**
+     * Checks if the confirmation message is displayed after saving the contact.
+     * @return true if confirmation message is displayed, false otherwise
+     */
+    public boolean isConfirmationMessageDisplayedForMaxName() {
+        // Placeholder for confirmation message locator (reuse if already defined)
+        By confirmationMessage = By.xpath("//div[contains(@class,'confirmation') or contains(text(),'Contact saved')]");
+        try {
+            return driver.findElement(confirmationMessage).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
